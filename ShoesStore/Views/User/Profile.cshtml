@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+    <link href="~/Assets/Client/css/user.css" rel="stylesheet" />
+
+<section>
+    <div class="container">
+        <div id="user-pf-wrapper">
+            <div id="left-panel-user">
+                <div id="avatar-name">
+                    <img src="./img/gallery/r2.jpg" alt="">
+                    <label class="font-weight-bold">Nguyen Hoang Thinh</label>
+                </div>
+                <ul>
+                    <li>
+                        <a href="#"><span><i class="fas fa-home"></i></span> Account overview</a>
+                    </li>
+                    <li>
+                        <a href="/User/EditProfile"><span><i class="fas fa-pen"></i></span> Edit profile</a>
+                    </li>
+                    <li>
+                        <a href="/User/ResetPassword"><span><i class="fas fa-lock"></i></span> Change password</a>
+                    </li>
+                    <li>
+                        <a href="#"><span><i class="fas fa-shopping-cart"></i></span> My cart</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="right-panel-user">
+                <div class="user-info">
+                    <label class="font-weight-bold">Account overview</label>
+                    <table>
+                        <tr>
+                            <td class="field"><label>User name</label></td>
+                            <td><label>Nguyen Hoang Thinh</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Email</label></td>
+                            <td><label>blv.tu97@gmail.com</label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Phone number</label></td>
+                            <td><label>123456789
+                        <tr>
+                            <td><label>Date of birth</label></td>
+                            <td><label>1/1/1999</label></td>
+                        </tr>
+                    </table>
+                    <button id="edit-pf">EDIT PROFILE</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+

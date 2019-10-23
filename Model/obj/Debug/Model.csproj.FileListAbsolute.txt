@@ -1,0 +1,11 @@
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\Model.dll.config
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\Model.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\Model.pdb
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.pdb
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.csprojAssemblyReference.cache

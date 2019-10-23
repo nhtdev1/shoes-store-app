@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+@section sectionHeader{
+    <title>
+        Nike.com.vn
+    </title>
+
+}
+
+@{ Html.RenderAction("BannerPartial", "Home");}
+
+@{ Html.RenderAction("DirectoriesPartial", "Home");}
+
+@{ Html.RenderAction("TrendingProductPartial", "Home");}
+
+@{ Html.RenderAction("OfferPartial", "Home");}
+
+@{ Html.RenderAction("BestSellersPartial", "Home");}
+
+@{ Html.RenderAction("BlogPartial", "Home");}
+
+@{ Html.RenderAction("SubscribePartial", "Home");}

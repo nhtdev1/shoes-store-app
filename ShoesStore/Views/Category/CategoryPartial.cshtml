@@ -1,0 +1,16 @@
+﻿@model List<Model.EF.Category>
+
+<ul class="main-categories">
+    <li class="common-filter">
+        <form action="#">
+            <ul>
+                @foreach (var item in Model)
+                {
+                    <li class="filter-list">@Html.ActionLink(item.CategoryName, "Index", "Category", new { CategoryID = item.CategoryID }, null)</li>
+                }
+
+            </ul>
+        </form>
+
+    </li>
+</ul>

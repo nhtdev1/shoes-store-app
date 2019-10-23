@@ -1,0 +1,82 @@
+﻿@*@model ShoesStore.Models.ExternalLoginListViewModel*@
+
+@using Microsoft.Owin.Security
+
+<div class="modal fade" id="modalCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="container" id="slide">
+
+                <div class="form-container2 sign-up-container">
+                    <form action="#" id="form">
+                        <h1>Create Account</h1>
+                        <div class="social-container">
+                            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <span>or use your email for registration</span>
+                        <input type="text" placeholder="Name" id="input" />
+                        <input type="email" placeholder="Email" id="input" />
+                        <input type="password" placeholder="Password" id="input" />
+                        <button>Sign Up</button>
+                    </form>
+                </div>
+
+                <div class="form-container2 sign-in-container">
+                    @{
+                        var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+                        if (loginProviders.Count() != 0)
+                        {
+
+                            using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "form" }))
+                            {
+                                <h1>Sign in</h1>
+                                @Html.AntiForgeryToken()
+                                <div id="socialLoginList" class="social-container">
+                                    <p>
+                                        @foreach (AuthenticationDescription p in loginProviders)
+                                        {
+                                            <button type="submit" class="social" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account" style="margin-top:5px;height:50px;width:100px;text-align:center;padding:0px">@p.AuthenticationType</button>
+                                        }
+                                    </p>
+                                </div>
+
+                                <!--<div class="social-container">
+                                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                                </div>-->
+                                <span>or use your account</span>
+                                <input type="email" placeholder="Email" id="input" />
+                                <input type="password" placeholder="Password" id="input" />
+                                <a href="#">Forgot your password?</a>
+                                <button>Sign In</button>
+                            }
+                        }
+
+                    }
+
+                </div>
+
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>To keep connected with us please login with your personal info</p>
+                            <button class="ghost" id="signIn">Sign In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Hello, Friend!</h1>
+                            <p>Enter your personal details and start journey with us</p>
+                            <button class="ghost" id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
