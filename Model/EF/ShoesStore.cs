@@ -28,6 +28,7 @@ namespace Model.EF
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ListAllProductView> ListAllProductViews { get; set; }
+        public virtual DbSet<ListSingleProductView> ListSingleProductViews { get; set; }
         public virtual DbSet<ProductSizeView> ProductSizeViews { get; set; }
         public virtual DbSet<TopTrendingView> TopTrendingViews { get; set; }
 
@@ -128,6 +129,10 @@ namespace Model.EF
 
             modelBuilder.Entity<ListAllProductView>()
                 .Property(e => e.Image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ListSingleProductView>()
+                .Property(e => e.ImageDefault)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ProductSizeView>()

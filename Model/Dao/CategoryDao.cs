@@ -17,10 +17,19 @@ namespace Model.Dao
             return model;
         }
 
-        public List<ListAllProductView> GetListAllProduct(int CategoryID)
+        public List<SingleProductList> GetListAllProduct(int CategoryID)
         {
-            var model = db.ListAllProductViews.Where(p=>p.CategoryID == CategoryID).ToList();
-            return model;
+            var model = db.ListSingleProductViews.Where(p=>p.CategoryID == CategoryID).ToList();
+
+            List<SingleProductList> lsp = new List<SingleProductList>();
+            foreach (var item in model)
+            {
+                SingleProductList sp = new SingleProductList();
+                sp.SingleProduct = item;
+                sp.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == item.ShoeID).ToList();
+                lsp.Add(sp);
+            }
+            return lsp;
         }
 
         public List<Category> GetCategory()
