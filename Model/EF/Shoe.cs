@@ -9,24 +9,34 @@ namespace Model.EF
     [Table("Shoe")]
     public partial class Shoe
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Shoe()
+        {
+            Colors = new HashSet<Color>();
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            Sizes = new HashSet<Size>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ShoeID { get; set; }
 
         [StringLength(50)]
-        public string ShoeName { get; set; }
+        public string Name { get; set; }
 
-        [StringLength(150)]
-        public string MetaTitle { get; set; }
+        [StringLength(200)]
+        public string Descriptions { get; set; }
 
-        [StringLength(500)]
-        public string Description { get; set; }
+        public int? CategoryID { get; set; }
 
-        public DateTime? DateCreated { get; set; }
+        public virtual Category Category { get; set; }
 
-        public DateTime? Updated { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Color> Colors { get; set; }
 
-        public bool? Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
 
-        public long? CategoryID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Size> Sizes { get; set; }
     }
 }

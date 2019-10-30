@@ -11,7 +11,7 @@ namespace Model.EF
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long AccID { get; set; }
+        public long UserID { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -21,11 +21,17 @@ namespace Model.EF
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long ProductID { get; set; }
+        public long ShoeID { get; set; }
 
         public int? Quantity { get; set; }
 
         [Column(TypeName = "numeric")]
         public decimal? Cost { get; set; }
+
+        public virtual Shoe Shoe { get; set; }
+
+        public virtual User User { get; set; }
+
+        public virtual PurchaseOrder PurchaseOrder { get; set; }
     }
 }

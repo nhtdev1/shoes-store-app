@@ -9,6 +9,12 @@ namespace Model.EF
     [Table("Size")]
     public partial class Size
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Size()
+        {
+            Shoes = new HashSet<Shoe>();
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long SizeID { get; set; }
 
@@ -16,5 +22,8 @@ namespace Model.EF
         public decimal? Number { get; set; }
 
         public bool? Status { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shoe> Shoes { get; set; }
     }
 }

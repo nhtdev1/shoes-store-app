@@ -10,12 +10,10 @@ namespace Model.EF
     public partial class Menu
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long MenuID { get; set; }
+        public int MenuID { get; set; }
 
         [StringLength(50)]
-        public string MenuName { get; set; }
-
-        public long? MenuIDParent { get; set; }
+        public string Name { get; set; }
 
         [StringLength(200)]
         public string Link { get; set; }
@@ -25,5 +23,7 @@ namespace Model.EF
         public bool? Status { get; set; }
 
         public long? AccID { get; set; }
+
+        public virtual Account Account { get; set; }
     }
 }

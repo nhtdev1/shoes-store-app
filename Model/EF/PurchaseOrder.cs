@@ -8,12 +8,15 @@ namespace Model.EF
 
     public partial class PurchaseOrder
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PurchaseOrder()
+        {
+            PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PoID { get; set; }
-
-        [StringLength(500)]
-        public string Notes { get; set; }
 
         public DateTime? OrderDate { get; set; }
 
@@ -21,6 +24,11 @@ namespace Model.EF
 
         public bool? Status { get; set; }
 
-        public long? AccID { get; set; }
+        public int? PayID { get; set; }
+
+        public virtual PayMethod PayMethod { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
     }
 }

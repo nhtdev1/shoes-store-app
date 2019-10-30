@@ -11,22 +11,32 @@ namespace Model.Dao
     {
         private ShoesStore db = new ShoesStore();
 
-        public List<ViewTopTrending> GetListTrendingProduct()
+        public List<TopTrendingProduct> GetListTrendingProduct()
         {
-            var model = db.ViewTopTrendings.OrderByDescending(p => p.Views).Take(8).ToList();
-            return model;
+            List<TopTrendingProduct> listTrending = new List<TopTrendingProduct>();
+            var model = db.TopTrendingViews.OrderByDescending(p => p.LikeNumber).Take(8).ToList();
+            foreach(var item in model)
+            {
+                TopTrendingProduct tp = new TopTrendingProduct();
+                tp.TopTrending = item;
+                tp.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == item.ShoeID).ToList();
+                listTrending.Add(tp);
+            }
+            return listTrending;
         }
 
-        public ViewShoeDetail GetDetailsOfProduct(int ShoeID,string Code)
-        {
-            return db.ViewShoeDetails.AsNoTracking().Where(p => p.ShoeID == ShoeID && p.Code.Equals(Code)).OrderByDescending(p => p.Likes).SingleOrDefault();
-        }
 
-        public List<ViewShoeDetail> GetListDetailsOfProductSameType(long ShoeID)
+        public ProductDetails GetProductDetails(int ShoeID, int ColorID)
         {
-            return db.ViewShoeDetails.AsNoTracking().Where(p => p.ShoeID == ShoeID).OrderByDescending(p => p.Likes).ToList();
-        }
+            ProductDetails pd = new ProductDetails();
+            pd.ProductCurrent = db.ListAllProductViews.Where(p=>p.ShoeID == ShoeID && p.ColorID==ColorID).SingleOrDefault();
+            pd.ImageProductList = db.PhotoDescriptions.Where(p => p.ColorID == ColorID).Select(p => p.Image).ToList();
+            pd.SizeProductList = db.ProductSizeViews.Where(p => p.ShoeID == ShoeID).Select(p => p.Number.ToString()).ToList();
 
+            pd.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == ShoeID).ToList();
+
+            return pd;
+        }
  
     }
 }

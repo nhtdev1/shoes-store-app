@@ -1,6 +1,35 @@
-﻿@using Model.EF
-@model List<ViewTopTrending>
+﻿@using Model.Dao
+@model List<TopTrendingProduct>
+<style>
+    #div-template-hover {
+        margin-top: 25px;
+        align-items: center !important;
+        display: flex;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
 
+        $("#product-block").hover(function (e) {
+            $("#div-template-hover").show();
+            $("#div-color-hover").hide();
+
+        }, function () {
+            $("#div-template-hover").hide();
+            $("#div-color-hover").show();
+        });
+
+
+        $(".img-template-hover").hover(function (e) {
+            var model = $(this).attr('src');
+            $('#img-product-large').attr('src', model);
+        }, function () {
+        });
+
+    });
+
+</script>
 <section class="section-margin calc-60px">
     <div class="container">
         <div class="section-intro pb-60px">
@@ -8,174 +37,41 @@
             <h2>Xu hướng<span class="section-intro__style">sản phẩm</span></h2>
         </div>
         <div class="row">
-
             @foreach (var item in Model)
             {
-                <div class="col-md-6 col-lg-4 col-xl-3">
+                <div class="col-md-6 col-lg-4 col-xl-3" id="product-block">
                     <div class="card text-center card-product">
                         <div class="card-product__img">
-                            <img class="card-img" src='@item.Image' alt="">
+                            <img class="card-img" src='@item.TopTrending.ImageDefault' alt="" id="img-product-large">
                             <ul class="card-product__imgOverlay">
                                 <li><button><i class="ti-search"></i></button></li>
                                 <li><button><i class="ti-shopping-cart"></i></button></li>
                                 <li><button><i class="ti-heart"></i></button></li>
                             </ul>
                         </div>
+
                         <div class="card-body">
                             <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="/Product/ProductDetails">@item.ShoeName</a></h4>
-                            <p class="card-product__price">@item.Price</p>
+                            <h4 class="card-product__title">@Html.ActionLink(item.TopTrending.Name, "SingleProduct", "Product", new { ShoeID = item.TopTrending.ShoeID, ColorID = item.TopTrending.ColorID }, null)</h4>
+                            <p class="card-product__price">@item.TopTrending.Price</p>
+
+                            <div id="div-color-hover" style="float: left;"><span>@item.OtherColorProductList.Count Colors</span></div>
+
+                            <div id="div-template-hover" style="display: none;float: left;">
+                                @foreach (var value in item.OtherColorProductList)
+                                {
+                                    <a>
+                                        <img src="@value.Image" alt="Avatar" width="40" height="40"
+                                             style="border-radius: 5%; margin-left: 5px" class="img-template-hover">
+                                    </a>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
-
 
             }
 
-            @*<div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike  Jordan Why.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike  Jordan Why</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Air Max 270.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Air Max 270</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Air Max.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Air Max</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Epic React.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Epic React</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Metcon 5.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Metcon 5</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Zoom.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Zoom</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike Free Metcon.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="single-product.html">Nike Free Metcon</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src="/Assets/Client/img/product/Nike React Presto.png" alt="">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title"><a href="#">Nike React Presto</a></h4>
-                            <p class="card-product__price">$150.00</p>
-                        </div>
-                    </div>
-                </div>
-            *@
         </div>
     </div>
 </section>

@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
 using Model.EF;
-using Model.DTO;
 
 namespace ShoesStore.Controllers
 {
@@ -17,30 +16,22 @@ namespace ShoesStore.Controllers
             return View();
         }
 
-        public ActionResult SingleProduct(int ShoeID, string Code)
+        public ActionResult SingleProduct(int ShoeID, int ColorID)
         {
-            ProductDao pd = new ProductDao();
-
-            ViewShoeDetail rs1 = pd.GetDetailsOfProduct(ShoeID,Code);
-            List<ViewShoeDetail> rs2 = pd.GetListDetailsOfProductSameType(ShoeID);
-
-            var model = new ProductDetails();
-            model.SingleProductDetails = rs1;
-            model.ProductDetailsSameType = rs2;
+            var model = new ProductDao().GetProductDetails(ShoeID,ColorID);
             return View(model);
         }
 
         [HttpPost]
-        public JsonResult ChangeImage(int ShoeID, string Code)
+        public JsonResult ChangeImage(int ShoeID, int ColorID)
         {
-            ProductDao pd = new ProductDao();
 
-            ViewShoeDetail rs1 = pd.GetDetailsOfProduct(ShoeID, Code);
+            var model = new ProductDao().GetProductDetails(ShoeID, ColorID);
             return Json(new
             {
-                Image = rs1.Image,
-                Price = rs1.Price
-            });
+                ImageList = model.ImageProductList,
+                Price = model.ProductCurrent.Price.ToString()
+            }); ;
         }
 
         public ActionResult SizePartial()

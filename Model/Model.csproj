@@ -53,22 +53,28 @@
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\ColorDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
+    <Compile Include="Dao\ProductDetails.cs" />
     <Compile Include="Dao\SizeDao.cs" />
-    <Compile Include="DTO\ProductDetails.cs" />
+    <Compile Include="Dao\TopTrendingProduct.cs" />
     <Compile Include="EF\Account.cs" />
+    <Compile Include="EF\Authorization.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\Color.cs" />
+    <Compile Include="EF\Feedback.cs" />
+    <Compile Include="EF\ListAllProductView.cs" />
     <Compile Include="EF\Menu.cs" />
+    <Compile Include="EF\PayMethod.cs" />
+    <Compile Include="EF\PhotoDescription.cs" />
+    <Compile Include="EF\Price.cs" />
+    <Compile Include="EF\ProductSizeView.cs" />
     <Compile Include="EF\PurchaseOrder.cs" />
     <Compile Include="EF\PurchaseOrderDetail.cs" />
     <Compile Include="EF\Shoe.cs" />
-    <Compile Include="EF\ShoeSizePrice.cs" />
     <Compile Include="EF\ShoesStore.cs" />
     <Compile Include="EF\Size.cs" />
     <Compile Include="EF\Slide.cs" />
-    <Compile Include="EF\ViewListAllProduct.cs" />
-    <Compile Include="EF\ViewShoeDetail.cs" />
-    <Compile Include="EF\ViewTopTrending.cs" />
+    <Compile Include="EF\TopTrendingView.cs" />
+    <Compile Include="EF\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

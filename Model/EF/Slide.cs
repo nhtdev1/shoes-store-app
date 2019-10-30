@@ -10,13 +10,10 @@ namespace Model.EF
     public partial class Slide
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long SlideID { get; set; }
+        public int SlideID { get; set; }
 
-        [StringLength(50)]
-        public string SlideName { get; set; }
-
-        [StringLength(50)]
-        public string Metatitle { get; set; }
+        [StringLength(100)]
+        public string Name { get; set; }
 
         [StringLength(200)]
         public string Link { get; set; }
@@ -24,5 +21,9 @@ namespace Model.EF
         public DateTime? DateCreated { get; set; }
 
         public bool? Status { get; set; }
+
+        public long? AccID { get; set; }
+
+        public virtual Account Account { get; set; }
     }
 }
