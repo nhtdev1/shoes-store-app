@@ -33,18 +33,27 @@ namespace Model.EF
         [StringLength(50)]
         public string ColorName { get; set; }
 
+        public DateTime? DateCreateColor { get; set; }
+
+        public bool? ColorStatus { get; set; }
+
         public int? ViewNumber { get; set; }
 
         public int? LikeNumber { get; set; }
-
-        public DateTime? DateCreateColor { get; set; }
 
         public DateTime? DateCreatePrice { get; set; }
 
         [Column(TypeName = "numeric")]
         public decimal? Price { get; set; }
 
+        [Key]
+        [Column(Order = 2)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public long PhotoID { get; set; }
+
         [StringLength(200)]
-        public string ImageDefault { get; set; }
+        public string Image { get; set; }
+
+        public bool? ImageStatus { get; set; }
     }
 }

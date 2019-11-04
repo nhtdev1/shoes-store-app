@@ -22,6 +22,11 @@ namespace ShoesStore.Controllers
             return View(model);
         }
 
+        public ActionResult TemplateProduct(int ShoeID, int ColorID)
+        {
+            var model = new ProductDao().GetTemplateProduct(ShoeID, ColorID);
+            return PartialView(model);
+        }
         [HttpPost]
         public JsonResult ChangeImage(int ShoeID, int ColorID)
         {

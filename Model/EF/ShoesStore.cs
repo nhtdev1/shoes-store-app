@@ -27,9 +27,9 @@ namespace Model.EF
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<ListAllProductView> ListAllProductViews { get; set; }
-        public virtual DbSet<ListSingleProductView> ListSingleProductViews { get; set; }
         public virtual DbSet<ProductSizeView> ProductSizeViews { get; set; }
+        public virtual DbSet<ProductView> ProductViews { get; set; }
+        public virtual DbSet<TemplateProductView> TemplateProductViews { get; set; }
         public virtual DbSet<TopTrendingView> TopTrendingViews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -127,20 +127,20 @@ namespace Model.EF
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ListAllProductView>()
-                .Property(e => e.Image)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<ListSingleProductView>()
-                .Property(e => e.ImageDefault)
-                .IsUnicode(false);
-
             modelBuilder.Entity<ProductSizeView>()
                 .Property(e => e.Number)
                 .HasPrecision(18, 1);
 
+            modelBuilder.Entity<ProductView>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TemplateProductView>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
+
             modelBuilder.Entity<TopTrendingView>()
-                .Property(e => e.ImageDefault)
+                .Property(e => e.Image)
                 .IsUnicode(false);
         }
     }

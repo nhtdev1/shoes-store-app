@@ -9,8 +9,8 @@ namespace Model.Dao
 {
     public class SingleProductList
     {
-        public ListSingleProductView SingleProduct { get; set; }
+        public ProductView MainProduct { get; set; }
 
-        public List<ListAllProductView> OtherColorProductList { get; set; }
+        public List<ProductView> OtherColorProductList { get; set; }
     }
 }

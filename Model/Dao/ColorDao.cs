@@ -11,9 +11,9 @@ namespace Model.Dao
     {
         ShoesStore db = new ShoesStore();
 
-        public List<Color> GetAllColor()
+        public List<String> GetAllColor()
         {
-            return db.Colors.ToList();
+            return db.Colors.Select(p => p.ColorName).Distinct().ToList();
         }
     }
 }

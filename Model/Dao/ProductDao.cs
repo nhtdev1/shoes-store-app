@@ -11,29 +11,31 @@ namespace Model.Dao
     {
         private ShoesStore db = new ShoesStore();
 
-        public List<TopTrendingProduct> GetListTrendingProduct()
+        //Lấy 8 sản phẩm trong vòng 30 ngày gần nhất có số lượt like nhiều nhất
+        public List<TopTrendingView> GetListTrendingProduct()
         {
-            List<TopTrendingProduct> listTrending = new List<TopTrendingProduct>();
-            var model = db.TopTrendingViews.OrderByDescending(p => p.LikeNumber).Take(8).ToList();
-            foreach(var item in model)
-            {
-                TopTrendingProduct tp = new TopTrendingProduct();
-                tp.TopTrending = item;
-                tp.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == item.ShoeID).ToList();
-                listTrending.Add(tp);
-            }
-            return listTrending;
+           return db.TopTrendingViews.OrderByDescending(p => p.LikeNumber).Take(8).ToList();
+
         }
 
+        public SingleProductList GetTemplateProduct(int ShoeID, int ColorID)
+        {
+            SingleProductList sp = new SingleProductList();
+            sp.MainProduct =
+                db.ProductViews.Where(p => p.ColorID == ColorID).SingleOrDefault();
+            sp.OtherColorProductList =
+                db.ProductViews.Where(p => p.ShoeID == ShoeID).ToList();
+            return sp;
+        }
 
         public ProductDetails GetProductDetails(int ShoeID, int ColorID)
         {
             ProductDetails pd = new ProductDetails();
-            pd.ProductCurrent = db.ListAllProductViews.Where(p=>p.ShoeID == ShoeID && p.ColorID==ColorID).SingleOrDefault();
+            pd.ProductCurrent = db.ProductViews.Where(p=>p.ShoeID == ShoeID && p.ColorID==ColorID).SingleOrDefault();
             pd.ImageProductList = db.PhotoDescriptions.Where(p => p.ColorID == ColorID).Select(p => p.Image).ToList();
             pd.SizeProductList = db.ProductSizeViews.Where(p => p.ShoeID == ShoeID).Select(p => p.Number.ToString()).ToList();
 
-            pd.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == ShoeID).ToList();
+            pd.OtherColorProductList = db.ProductViews.Where(p => p.ShoeID == ShoeID).ToList();
 
             return pd;
         }

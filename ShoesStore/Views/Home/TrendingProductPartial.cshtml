@@ -1,76 +1,17 @@
-﻿@using Model.Dao
-@model List<TopTrendingProduct>
-<style>
-    #div-template-hover {
-        margin-top: 25px;
-        align-items: center !important;
-        display: flex;
-    }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var idtemp;
-        $(".product-block").hover(function (e) {
-            var id = $(this).attr('id');
-            idtemp = id;
-            $("#div-template-hover-" + id).show();
-            $("#div-color-hover-" + id).hide();
-        }, function () {
-                var id = $(this).attr('id');
-            $("#div-template-hover-"+id).hide();
-            $(`#div-color-hover-${id}`).show();
-        });
+﻿@using Model.EF
+@model List<TopTrendingView>
 
-
-        $(".img-template-hover").hover(function (e) {
-            var model = $(this).attr('src');
-            $('#img-product-large-' + idtemp).attr('src', model);
-        }, function () {
-        });
-
-    });
-
-</script>
 <section class="section-margin calc-60px">
     <div class="container">
         <div class="section-intro pb-60px">
-            <p>Mặt hàng phổ biến trên thị trường</p>
-            <h2>Xu hướng<span class="section-intro__style">sản phẩm</span></h2>
+            <p>Popular Item in the market</p>
+            <h2>Trending <span class="section-intro__style">Product</span></h2>
         </div>
+
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-md-6 col-lg-4 col-xl-3 product-block" id="@item.TopTrending.ShoeID">
-                    <div class="card text-center card-product">
-                        <div class="card-product__img">
-                            <img class="card-img" src='@item.TopTrending.ImageDefault' alt="" id="img-product-large-@item.TopTrending.ShoeID">
-                            <ul class="card-product__imgOverlay">
-                                <li><button><i class="ti-search"></i></button></li>
-                                <li><button><i class="ti-shopping-cart"></i></button></li>
-                                <li><button><i class="ti-heart"></i></button></li>
-                            </ul>
-                        </div>
-
-                        <div class="card-body">
-                            <p>Accessories</p>
-                            <h4 class="card-product__title">@Html.ActionLink(item.TopTrending.Name, "SingleProduct", "Product", new { ShoeID = item.TopTrending.ShoeID, ColorID = item.TopTrending.ColorID }, null)</h4>
-                            <p class="card-product__price">@item.TopTrending.Price</p>
-
-                            <div id="div-color-hover-@item.TopTrending.ShoeID" style="float: left;"><span>@item.OtherColorProductList.Count Colors</span></div>
-
-                            <div id="div-template-hover-@item.TopTrending.ShoeID" style="display: none;float: left;">
-                                @foreach (var value in item.OtherColorProductList)
-                                {
-                                    <a>
-                                        <img  src="@value.Image" alt="Avatar" width="40" height="40"
-                                             style="border-radius: 5%; margin-left: 5px" class="img-template-hover">
-                                    </a>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                Html.RenderAction("TemplateProduct", "Product", new { ShoeID = item.ShoeID, ColorID = item.ColorID });
 
             }
 

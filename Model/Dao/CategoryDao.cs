@@ -11,25 +11,15 @@ namespace Model.Dao
     {
         ShoesStore db = new ShoesStore();
 
-        public List<ListAllProductView> GetListAllProduct()
+        public List<TemplateProductView> GetListAllProduct()
         {
-            var model = db.ListAllProductViews.ToList();
+            var model = db.TemplateProductViews.ToList();
             return model;
         }
 
-        public List<SingleProductList> GetListAllProduct(int CategoryID)
+        public List<TemplateProductView> GetListAllProduct(int CategoryID)
         {
-            var model = db.ListSingleProductViews.Where(p=>p.CategoryID == CategoryID).ToList();
-
-            List<SingleProductList> lsp = new List<SingleProductList>();
-            foreach (var item in model)
-            {
-                SingleProductList sp = new SingleProductList();
-                sp.SingleProduct = item;
-                sp.OtherColorProductList = db.ListAllProductViews.Where(p => p.ShoeID == item.ShoeID).ToList();
-                lsp.Add(sp);
-            }
-            return lsp;
+            return db.TemplateProductViews.Where(p=>p.CategoryID == CategoryID).ToList();
         }
 
         public List<Category> GetCategory()

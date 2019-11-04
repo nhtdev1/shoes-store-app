@@ -1,10 +1,10 @@
-﻿@model List<Model.EF.Color>
+﻿@model List<String>
 
 <form action="#">
     <ul>
         @foreach (var item in Model)
         {
-            <li class="filter-list"><input class="pixel-radio" type="radio" name="color"><label for="black">@item.ColorName</label></li>
+            <li class="filter-list"><input class="pixel-radio" type="radio" name="color"><label for="black">@item</label></li>
         }
     </ul>
 </form>

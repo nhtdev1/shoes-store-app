@@ -9,7 +9,7 @@ namespace Model.Dao
 {
     public class ProductDetails
     {   
-        public ListAllProductView ProductCurrent { get; set; }
+        public ProductView ProductCurrent { get; set; }
 
         public List<String> ImageProductList { get; set; }
 
@@ -19,6 +19,6 @@ namespace Model.Dao
 
         public double Cost { get; set; }
 
-        public List<ListAllProductView> OtherColorProductList { get; set; }
+        public List<ProductView> OtherColorProductList { get; set; }
     }
 }
