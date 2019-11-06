@@ -13,28 +13,28 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
                 <div class="sidebar-categories">
-                    <div class="head">Danh mục sản phẩm</div>
+                    <div class="head">Browse Categories</div>
                     @{ Html.RenderAction("CategoryPartial", "Category");}
 
                 </div>
                 <div class="sidebar-filter">
-                    <div class="top-filter-head">Lọc sản phẩm</div>
+                    <div class="top-filter-head">Product Filters</div>
 
                     <div class="common-filter">
-                        <div class="head">Kích thước</div>
+                        <div class="head">Size</div>
                         @{ Html.RenderAction("SizePartial", "Product");}
 
 
                     </div>
 
                     <div class="common-filter">
-                        <div class="head">Màu</div>
+                        <div class="head">Color</div>
                         @{ Html.RenderAction("ColorPartial", "Product");}
 
                     </div>
 
                     <div class="common-filter">
-                        <div class="head">Giá</div>
+                        <div class="head">Price</div>
 
                         @{ Html.RenderAction("PricePartial", "Product");}
                     </div>
@@ -46,9 +46,10 @@
                 <div class="filter-bar d-flex flex-wrap align-items-center">
                     <div class="sorting">
                         <select>
-                            <option value="1">Default sorting</option>
-                            <option value="1">Default sorting</option>
-                            <option value="1">Default sorting</option>
+                            <option value="1">Newest</option>
+                            <option value="1">Price:High-Low</option>
+                            <option value="1">Price:Low-High</option>
+                            <option value="1">Top Seller</option>
                         </select>
                     </div>
                     <div class="sorting mr-auto">
@@ -62,7 +63,7 @@
                         <div class="input-group filter-bar-search">
                             <input type="text" placeholder="Search">
                             <div class="input-group-append">
-                                <button type="button"><i class="ti-search"></i></button>
+                                <button type="button" style="border-radius:0%;height:38px"><i class="ti-search"></i></button>
                             </div>
                         </div>
                     </div>

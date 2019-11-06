@@ -3,12 +3,13 @@
 <style>
     #div-template-hover {
         margin-top: 25px;
-        align-Models: center !important;
         display: flex;
     }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
 
 <script>
     $(document).ready(function () {
@@ -19,8 +20,8 @@
             $("#div-template-hover-" + id).show();
             $("#div-color-hover-" + id).hide();
         }, function () {
-                var id = $(this).attr('id');
-            $("#div-template-hover-"+id).hide();
+            var id = $(this).attr('id');
+            $("#div-template-hover-" + id).hide();
             $(`#div-color-hover-${id}`).show();
         });
 
@@ -35,16 +36,123 @@
 
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        autoPlayYouTubeModal();
+    });
+
+    function autoPlayYouTubeModal() {
+        var trigger = $('.videoModalTriger');
+        trigger.click(function () {
+            var theModal = $(this).data("target");
+            var videoSRC = $(this).attr("data-videoModal");
+            $(theModal + ' iframe').attr('src', videoSRC);
+            $(theModal).on('hidden.bs.modal', function (e) {
+                $(theModal + ' iframe').attr('src', '');
+            });
+        });
+    };
+</script>
+
+<script>
+    $(document).ready(function () {
+        registerEvents();
+    });
+
+    function registerEvents() {
+        $('.btn-cart').off('click').on('click', function (e) {
+            e.preventDefault();
+            var ShoeID = $(this).data('id');
+            var ColorID = $(this).data('colorid');
+            $.ajax({
+                url: '/Cart/UpdateQuantity',
+                data: { ShoeID: ShoeID, ColorID: ColorID, quantity: 1, size: 43 },
+                dataType: "json",
+                type: "POST",
+                success: function (response) {
+                    $('.nav-shop__circle').text(response.quantity);
+                }
+            });
+        });
+    }
+
+</script>
+
 <div class="col-md-6 col-lg-4 col-xl-3 product-block" id="@Model.MainProduct.ShoeID">
+
     <div class="card text-center card-product">
         <div class="card-product__img">
             <img class="card-img" src='@Model.MainProduct.Image' alt="" id="img-product-large-@Model.MainProduct.ShoeID">
             <ul class="card-product__imgOverlay">
-                <li><button><i class="ti-search"></i></button></li>
-                <li><button><i class="ti-shopping-cart"></i></button></li>
+                <li>
+                    <button type="button"
+                            class="btn btn-primary videoModalTriger"
+                            data-toggle="modal"
+                            data-target="#modalYT"
+                            data-videoModal="@Model.MainProduct.VideoIllustration">
+                        <i class="ti-eye"></i>
+                    </button>
+                </li>
+                <li><button class="btn-cart" data-id="@Model.MainProduct.ShoeID" data-colorid="@Model.MainProduct.ColorID"><i class="ti-shopping-cart"></i></button></li>
                 <li><button><i class="ti-heart"></i></button></li>
             </ul>
         </div>
+
+
+
+
+        <!--Modal: modalYT-->
+        <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true" style="z-index:10000">
+            <div class="modal-dialog modal-lg" role="document">
+
+                <!--Content-->
+                <div class="modal-content">
+
+                    <!--Body-->
+                    <div class="modal-body mb-0 p-0">
+
+                        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" id="yt-player">
+                            <iframe class="embed-responsive-item" src=""
+                                    allowfullscreen></iframe>
+                        </div>
+
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center flex-column flex-md-row">
+                        <span class="mr-4">Spread the word!</span>
+                        <div>
+                            <a href="#" type="button" class="btn-floating btn-sm btn-fb">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <!--Twitter-->
+                            <a href="#" type="button" class="btn-floating btn-sm btn-tw">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <!--Google +-->
+                            <a href="#" type="button" class="btn-floating btn-sm btn-gplus">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                            <!--Linkedin-->
+                            <a href="#" type="button" class="btn-floating btn-sm btn-ins">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+                                data-dismiss="modal">
+                            Close
+                        </button>
+
+
+                    </div>
+
+                </div>
+                <!--/.Content-->
+
+            </div>
+        </div>
+        <!--Modal: modalYT-->
 
         <div class="card-body">
             <p>Accessories</p>
@@ -56,7 +164,7 @@
             <div id="div-template-hover-@Model.MainProduct.ShoeID" style="display: none;float: left;">
                 @foreach (var value in Model.OtherColorProductList)
                 {
-                    <a>
+                    <a href="@Url.Action("SingleProduct","Product",new { ShoeID = value.ShoeID, ColorID = value.ColorID })">
                         <img src="@value.Image" alt="Avatar" width="40" height="40"
                              style="border-radius: 5%; margin-left: 5px" class="img-template-hover">
                     </a>
@@ -64,4 +172,5 @@
             </div>
         </div>
     </div>
+
 </div>

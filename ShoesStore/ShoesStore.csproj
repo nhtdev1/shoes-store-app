@@ -178,6 +178,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -414,6 +415,8 @@
     <Content Include="Assets\Client\img\r8.jpg" />
     <Content Include="Assets\Client\img\r9.jpg" />
     <Content Include="Assets\Client\js\main.js" />
+    <Content Include="Assets\Client\js\product\template-product.js" />
+    <Content Include="Assets\Client\js\product\update-cart.js" />
     <Content Include="Assets\Client\js\select\select-product.js" />
     <Content Include="Assets\Client\js\zoom\jquery.zoom.js" />
     <Content Include="Assets\Client\js\zoom\jquery.zoom.min.js" />

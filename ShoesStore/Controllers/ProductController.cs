@@ -36,7 +36,7 @@ namespace ShoesStore.Controllers
             {
                 ImageList = model.ImageProductList,
                 Price = model.ProductCurrent.Price.ToString()
-            }); ;
+            }); 
         }
 
         public ActionResult SizePartial()

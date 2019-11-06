@@ -5,6 +5,7 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramew
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.SqlServer.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.xml
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.csprojAssemblyReference.cache
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.csproj.CopyComplete
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\Model\obj\Debug\Model.pdb

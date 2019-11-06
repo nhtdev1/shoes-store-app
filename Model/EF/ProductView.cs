@@ -17,6 +17,9 @@ namespace Model.EF
         [StringLength(200)]
         public string Descriptions { get; set; }
 
+        [StringLength(200)]
+        public string VideoIllustration { get; set; }
+
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

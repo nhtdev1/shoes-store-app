@@ -18,6 +18,7 @@ namespace Model.Dao
 
         }
 
+        //Lấy một sản phẩm (kèm với danh sách màu khác) theo ID và ColorID
         public SingleProductList GetTemplateProduct(int ShoeID, int ColorID)
         {
             SingleProductList sp = new SingleProductList();
@@ -40,5 +41,9 @@ namespace Model.Dao
             return pd;
         }
  
+        public ProductView GetProduct(int ShoeID, int ColorID)
+        {
+            return db.ProductViews.Where(p => p.ShoeID == ShoeID && p.ColorID == ColorID).SingleOrDefault();
+        }
     }
 }

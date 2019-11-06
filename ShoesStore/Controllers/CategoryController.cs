@@ -11,6 +11,7 @@ namespace ShoesStore.Controllers
     {
         // GET: Category
         
+         //Trang danh mục sản phẩm
         public ActionResult Index(int CategoryID = 1)
         {
             var model  = new CategoryDao().GetListAllProduct(CategoryID);

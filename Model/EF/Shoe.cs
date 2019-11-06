@@ -26,6 +26,9 @@ namespace Model.EF
         [StringLength(200)]
         public string Descriptions { get; set; }
 
+        [StringLength(200)]
+        public string VideoIllustration { get; set; }
+
         public int? CategoryID { get; set; }
 
         public virtual Category Category { get; set; }
