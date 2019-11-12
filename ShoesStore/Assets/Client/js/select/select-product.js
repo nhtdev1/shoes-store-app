@@ -14,6 +14,7 @@
                 dataType:"json",
                 type: "POST",
                 success: function (response) {
+                    console.log('aaaa');
                     var model = response.ImageList;
                     $('.img-fluid').eq(0).attr({
                         'src': response.ImageList[2],

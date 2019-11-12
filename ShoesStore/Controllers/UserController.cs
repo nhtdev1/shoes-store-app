@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Model.Dao;
+using Model.EF;
+using ShoesStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,15 +11,29 @@ namespace ShoesStore.Controllers
 {
     public class UserController : Controller
     {
+        public const string UserSession = "UserSession";
+
         // GET: User
         public ActionResult Profile()
         {
-            return View();
+            var user = Session[UserSession] as UserLogin;
+            User model = null;
+            if (user != null)
+            {
+               model = new UserDao().GetUser(user.UserID);
+            }
+            return View(model);
         }
 
         public ActionResult EditProfile()
         {
-            return View();
+            var user = Session[UserSession] as UserLogin;
+            User model = null;
+            if (user != null)
+            {
+                model = new UserDao().GetUser(user.UserID);
+            }
+            return View(model);
         }
 
         public ActionResult ResetPassword()

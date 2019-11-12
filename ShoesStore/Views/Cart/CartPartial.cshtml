@@ -1,0 +1,248 @@
+﻿@model List<ShoesStore.Models.CartItem>
+
+<style>
+
+    .price {
+        margin-left: 1rem;
+    }
+
+    .modal-footer {
+        padding-top: 0rem;
+    }
+
+    .modal-body {
+        max-height: calc(100vh - 210px);
+        overflow-y: auto;
+    }
+</style>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cartModal').modal('show');
+    });
+</script>*@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+@*Trong jQuery, Click () - chỉ đính kèm trình xử lý sự kiện nếu phần tử đã tồn tại trong mã html.
+
+    Nó sẽ không xem xét phần tử mới được tạo động (phần tử Tương lai) sau khi trang được tải.
+
+    Các yếu tố động được tạo ra với sự trợ giúp của javascript hoặc jquery (không phải bằng html) .
+
+    Vì vậy, sự kiện click không kích hoạt.
+
+    Giải pháp :
+
+    Để khắc phục điều này chúng ta nên sử dụng hàm on () .*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        updateCart();
+    });
+    function updateCart() {
+        $(document).on('click', '.btn-danger', function () {
+            var ShoeID = $(this).data('id');
+            var ColorID = $(this).data('colorid');
+            console.log(ShoeID + "-" + ColorID);
+            $.ajax({
+                url: '/Cart/UpdateCart',
+                data: { ShoeID: ShoeID, ColorID: ColorID },
+                dataType: "json",
+                type: "POST",
+                success: function (response) {
+                    if (response.status == true) {
+                        $('.nav-shop__circle').text(response.total);
+                        let html = "";
+                        response.cart.forEach(el => {
+                            var j = 1;
+                            html += `<tr>
+                                    <td class="w-25">
+                                        <img src="${el.Product.Image}" class="img-fluid img-thumbnail"  alt="Sheep">
+                                    </td>
+                                    <td>${el.Product.Name}</td>
+                                    <td>${el.Product.Price}$</td>
+                                    <td>
+                                        <div class="div-select-size">
+                                          <select class="select-size form-control" style="width:auto">`;
+                            el.SizeOther.forEach(p => {
+                                html += ` <option value="${j++}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}">${p}</option>`
+                            });
+                            html += `          </select>
+                                         </div>
+                                      </td>
+                                    <td class="qty"><input type="number" min="1" class="form-control spinner-quantity" id="input1" value="${el.Quantity}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-price="${el.Product.Price}""></td>
+                                    <td class="price-a-product-${el.Product.ShoeID}-${el.Product.ColorID}">${(el.Product.Price * el.Quantity)}$</td>
+                                    <td>
+                                         <div>
+                                        <button class="btn btn-danger btn-sm" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>`;
+                        })
+
+                        $(".table-cart tbody").html(html);
+
+                        let html2 = `<h5 >Total: <span class="price text-success cost-of-cart">${response.cost}$</span></h5>`
+                        $(".justify-content-end").html(html2)
+                    }
+                }
+            });
+
+        });
+    }
+</script>
+
+<script type="text/javascript">
+
+    $(document).off('change').on('change', '.select-size', function () {
+        var size = $(this).children("option:selected").text();
+        var ShoeID = $(this).children("option:selected").data('id');
+        var ColorID = $(this).children("option:selected").data('colorid');
+        console.log(ShoeID + "-" + ColorID + "-" + size);
+        $.ajax({
+            url: '/Cart/UpdateSize',
+            data: { ShoeID: ShoeID, ColorID: ColorID, NewSize: size },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).off('change').on('change', '.spinner-quantity', function () {
+        var quantity = $(this).val();
+        var ShoeID = $(this).data('id');
+        var ColorID = $(this).data('colorid');
+        var Price = $(this).data('price');
+        $('.price-a-product-' + ShoeID + '-' + ColorID).text((quantity * Price) + '$');
+        $.ajax({
+            url: '/Cart/UpdateCost',
+            data: { ShoeID: ShoeID, ColorID: ColorID, quantity: quantity },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    $('.nav-shop__circle').text(response.total);
+                    $('.cost-of-cart').text(response.cost+'$');
+                }
+            }
+        });
+    });
+</script>
+
+<ul class="nav-shop">
+    <li class="nav-item"><button><i class="ti-search"></i></button></li>
+    <li class="nav-item">
+        <form action="/Cart/Index" method="get">
+            @{
+                if (Model != null)
+                {
+                    var number = 0;
+                    Model.ForEach(p =>
+                    {
+                        number += p.Quantity;
+                    });
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal"><i class="ti-shopping-cart"></i><span class="nav-shop__circle">@number</span></button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal"><i class="ti-shopping-cart"></i><span class="nav-shop__circle">0</span></button>
+                }
+
+            }
+        </form>
+    </li>
+    <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+</ul>
+
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Your Shopping Cart
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @{
+                    <table class="table table-image table-cart">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+
+                        @if (Model != null)
+                        {
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var j = 1;
+                                    <tr>
+                                        <td class="w-25">
+                                            <img src="@item.Product.Image" class="img-fluid img-thumbnail" alt="Sheep">
+                                        </td>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.Product.Price$</td>
+                                        <td>
+                                            <div class="div-select-size">
+                                                <select class="select-size form-control" style="width:auto">
+                                                    @foreach (var vl in item.SizeOther)
+                                                    {
+                                                        <option value="@(j++)" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID">@vl</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td class="qty"><input type="number" min="1" class="form-control spinner-quantity" id="input1" value="@item.Quantity" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID" data-price="@item.Product.Price"></td>
+                                        <td class="price-a-product-@item.Product.ShoeID-@item.Product.ColorID">@(item.Product.Price * item.Quantity)$</td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-danger btn-sm" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        }
+                        else
+                        {
+                            <tbody>
+                            </tbody>
+                        }
+                    </table>
+                }
+                <div class="d-flex justify-content-end">
+                    <h5>Total: <span class="price text-success cost-of-cart">0$</span></h5>
+                </div>
+            </div>
+
+            <div class="modal-footer border-top-0 d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+
+                <form action="/Cart/Checkout">
+                    <input type="submit" value="Checkout" class="btn btn-success" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

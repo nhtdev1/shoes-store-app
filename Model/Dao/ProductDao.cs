@@ -43,7 +43,18 @@ namespace Model.Dao
  
         public ProductView GetProduct(int ShoeID, int ColorID)
         {
-            return db.ProductViews.Where(p => p.ShoeID == ShoeID && p.ColorID == ColorID).SingleOrDefault();
+            return db.ProductViews.Where(p => p.ColorID == ColorID && p.ShoeID == ShoeID).SingleOrDefault();
+        }
+
+        public List<double> GetSizes(int ShoeID)
+        {
+            var model = db.ProductSizeViews.Where(p => p.ShoeID == ShoeID).Select(p => p.Number).ToList();
+            var listSize = new List<double>();
+            model.ForEach(p =>
+            {
+                listSize.Add(double.Parse(p.ToString()));
+            });
+            return listSize;
         }
     }
 }

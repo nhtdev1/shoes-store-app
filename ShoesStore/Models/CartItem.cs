@@ -13,6 +13,8 @@ namespace ShoesStore.Models
 
         public int Quantity { get; set; }
 
-        public int Size { get; set; }
+        public double Size { get; set; }
+
+        public List<double> SizeOther { get; set; }
     }
 }

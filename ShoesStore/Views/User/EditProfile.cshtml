@@ -1,4 +1,5 @@
-﻿
+﻿@model Model.EF.User
+
 @{
     ViewBag.Title = "EditProfile";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
@@ -10,7 +11,7 @@
             <div id="left-panel-user">
                 <div id="avatar-name">
                     <img src="./img/gallery/r2.jpg" alt="">
-                    <label class="font-weight-bold">Le Van Luyen</label>
+                    <label class="font-weight-bold">@Model.Name</label>
                 </div>
                 <ul>
                     <li>
@@ -33,19 +34,19 @@
                     <form action="">
                         <div class="form-group">
                             <label>User name</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" disabled value="@Model.Name">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" disabled value="@Model.Email">
                         </div>
                         <div class="form-group">
                             <label>Phone number</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="@Model.Phone">
                         </div>
                         <div class="form-group">
                             <label>Date of birth</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" value="@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")">
                         </div>
                     </form>
                     <button>SAVE</button>
