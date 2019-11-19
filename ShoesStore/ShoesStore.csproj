@@ -46,9 +46,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -98,9 +106,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -170,9 +175,30 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Models\ChartShoesStore.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChartShoesStore.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ChartShoesStore.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChartShoesStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\ChartShoesStore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChartShoesStore.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Admin\Models\DataPoint.cs" />
+    <Compile Include="Areas\Admin\Models\DataPoint2.cs" />
+    <Compile Include="Areas\Admin\Models\Point.cs">
+      <DependentUpon>ChartShoesStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CountryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -182,6 +208,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\API\Country.cs" />
+    <Compile Include="Models\API\CountryClient.cs" />
+    <Compile Include="Models\API\District.cs" />
+    <Compile Include="Models\API\DistrictClient.cs" />
+    <Compile Include="Models\API\Province.cs" />
+    <Compile Include="Models\API\ProvinceClient.cs" />
+    <Compile Include="Models\API\Ward.cs" />
+    <Compile Include="Models\API\WardClient.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -190,8 +224,23 @@
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\CountryViewModel.cs" />
+    <Compile Include="ViewModel\DistrictViewModel.cs" />
+    <Compile Include="ViewModel\ProvinceViewModel.cs" />
+    <Compile Include="ViewModel\WardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Models\ChartShoesStore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ChartShoesStore.Context.cs</LastGenOutput>
+      <DependentUpon>ChartShoesStore.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Models\ChartShoesStore.edmx.sql" />
+    <Content Include="Areas\Admin\Models\ChartShoesStore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ChartShoesStore.cs</LastGenOutput>
+      <DependentUpon>ChartShoesStore.edmx</DependentUpon>
+    </Content>
     <Content Include="Assets\Admin\css\all.css" />
     <Content Include="Assets\Admin\css\sb-admin-2.css" />
     <Content Include="Assets\Admin\css\sb-admin-2.min.css" />
@@ -2733,6 +2782,16 @@
     <Content Include="Assets\Admin\webfonts\fa-solid-900.woff2" />
     <Content Include="Areas\Admin\Views\Home\OrderDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Home\WaitToTakeOrders.cshtml" />
+    <EntityDeploy Include="Areas\Admin\Models\ChartShoesStore.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChartShoesStore.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Areas\Admin\Models\ChartShoesStore.edmx.diagram">
+      <DependentUpon>ChartShoesStore.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Home\Column.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Column2.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Column3.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2806,8 +2865,7 @@
     <Content Include="Views\Login\LoginPopupPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2827,6 +2885,10 @@
       <Project>{41e4e682-4fa1-4099-8a91-8b44e83ed265}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\CountryApi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

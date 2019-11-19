@@ -103,7 +103,7 @@ Nếu đây là một vấn đề, sử dụng .removeData()phương pháp để
                                     <td class="price-a-product-${el.Product.ShoeID}-${el.Product.ColorID}">${(el.Product.Price * el.Quantity)}$</td>
                                     <td>
                                          <div>
-                                        <button class="btn btn-danger btn-sm" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}">
+                                        <button class="btn btn-danger btn-sm" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-size="${el.Size}">
                                             <i class="fa fa-times"></i>
                                         </button>
                                         </div>
@@ -115,6 +115,15 @@ Nếu đây là một vấn đề, sử dụng .removeData()phương pháp để
 
                         let html2 = `<h5 >Total: <span class="price text-success cost-of-cart">${response.cost}$</span></h5>`
                         $(".justify-content-end").html(html2)
+
+                        
+                            if (response.cart.length > 0) {
+                                let html3 = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="/Cart/Checkout">
+                    <input type="submit" value="Checkout" class="btn btn-success" />
+                </form>`;
+                                $(".justify-content-between").html(html3);
+                            }
                     }
                 }
             });

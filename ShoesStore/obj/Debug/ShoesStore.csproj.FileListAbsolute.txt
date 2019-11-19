@@ -105,3 +105,5 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesSt
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.csproj.CopyComplete
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.pdb
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Net.Http.Formatting.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Net.Http.Formatting.xml

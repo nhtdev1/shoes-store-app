@@ -19,7 +19,7 @@
     <link href="/Assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/Assets/Admin/css/styles.css">
     <link rel="stylesheet" href="/Assets/Admin/css/all.css">
-
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -121,12 +121,23 @@
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item"> 
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharts" aria-expanded="true"
+                   aria-controls="collapseCharts">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span>
                 </a>
+                <div id="collapseCharts" class="collapse" aria-labelledby="headingCharts" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Categories:</h6>
+                        <a class="collapse-item" href="/Admin/Home/Column">Thống kê sản phẩm</a>
+                        <a class="collapse-item" href="/Admin/Home/Column2">Tốc độ tăng trưởng</a>
+                        <a class="collapse-item" href="/Admin/Home/Column3">Thống kê danh mục</a>
+                    </div>
+                </div>
             </li>
+
+  
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -420,11 +431,9 @@
     <script src="/Assets/Admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="/Assets/Admin/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
+    <!--<script src="/Assets/Admin/vendor/chart.js/Chart.min.js"></script>
     <script src="/Assets/Admin/js/demo/chart-area-demo.js"></script>
-    <script src="/Assets/Admin/js/demo/chart-pie-demo.js"></script>
+    <script src="/Assets/Admin/js/demo/chart-pie-demo.js"></script>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
     <script type="text/javascript">

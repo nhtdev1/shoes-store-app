@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ChartShoesStore" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ChartShoesStoreContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Points" EntityType="ChartShoesStore.Point" />
+  </EntityContainer>
+  <EntityType Name="Point">
+    <Key>
+      <PropertyRef Name="x" />
+    </Key>
+    <Property Name="x" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="y" Type="Int32" Nullable="true" />
+  </EntityType>
+</Schema>

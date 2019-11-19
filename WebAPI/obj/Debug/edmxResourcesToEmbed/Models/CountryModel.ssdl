@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbCountryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CommonName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FormalName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryType" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountrySubType" Type="nvarchar" MaxLength="100" />
+    <Property Name="Sovereignty" Type="nvarchar" MaxLength="100" />
+    <Property Name="Capital" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="CurrencyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="TelephoneCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryCode3" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="InternetCountryCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="IsPublished" Type="bit" />
+    <Property Name="Flags" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProvinceId" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="IsPublished" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="20" />
+    <Property Name="TelephoneCode" Type="int" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="2" />
+    <Property Name="SortOrder" Type="int" />
+    <Property Name="IsPublished" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="Ward">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="LatiLongTude" Type="nvarchar" MaxLength="50" />
+    <Property Name="DistrictID" Type="int" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
+    <Property Name="IsPublished" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="DbCountryModelStoreContainer">
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ward" EntityType="Self.Ward" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

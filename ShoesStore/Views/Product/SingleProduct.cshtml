@@ -7,13 +7,17 @@
 @model ProductDetails
 
 @section jsFooter{
+
     <script src="/Assets/Client/js/select/select-product.js"></script>
+
 }
+
+
 <!--================Single Product Area =================-->
 <div class="product_image_area">
     <div class="container">
         <div class="row s_product_inner">
-            <div class="col-lg-6">
+            <div class="col-lg-6 slide-product-image">
                 <div class="owl-carousel owl-theme s_Product_carousel">
 
                     @{
@@ -24,7 +28,7 @@
                             var id = "ex" + stt;
                             <div class="single-prd-item">
                                 <span class='zoom' id='@id'>
-                                    <img class="img-fluid" src='@item' alt='' id="" />
+                                    <img class="img-fluid" src='@item' alt=''/>
                                 </span>
                             </div>
                             stt++;
@@ -57,24 +61,23 @@
                         @foreach (var item in Model.OtherColorProductList)
                         {
                             <a href="#"
-                               class="btn-active" data-id="@item.ShoeID" data-color="@item.ColorID">
+                               class="btn-active"  data-id="@item.ShoeID" data-color="@item.ColorID">
                                 <img src="@item.Image" alt="Avatar" width="100" height="100"
-                                     style="border-radius: 5%; margin-left: 5px">
+                                     style="border-radius: 5%; margin-left: 5px;">
                             </a>
                         }
 
                     </div>
 
-
                     <h4 style="margin-top: 10px">Select Size</h4>
-
+                    <h5 style="display:none;margin-top:10px;color:orangered" class="head-size-id">Please select size</h5>
 
                     <!---->
 
                     <div class="card_area d-flex align-items-center">
                         @foreach (var item in Model.SizeProductList)
                         {
-                            <a class="icon_btn" href="#">@item</a>
+                            <button class="btn btn-outline-primary btn-select-size" style="margin-left:5px;" value="@item">@item</button>
                         }
 
                     </div>
@@ -83,18 +86,17 @@
                     <div class="card_area d-flex align-items-center">
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
-                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                    class="increase items-count" type="button">
-                                <i class="ti-angle-left"></i>
-                            </button>
-                            <input type="text" name="qty" id="sst" size="2" maxlength="12" value="1"
-                                   title="Quantity:" class="input-text qty">
-                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )  &amp;&amp; sst > 0 ) result.value--;return false;"
-                                    class="reduced items-count" type="button">
-                                <i class="ti-angle-right"></i>
-                            </button>
-                            <a class="button primary-btn" href="#">Add to Cart</a>
+                            <span>
+                                <input type="number" min="1" value="1"
+                                       id="spinner-quantity">
+                            </span>
+                            <a class="button primary-btn btn-add-to-cart" href="#"
+                               data-id="@Model.ProductCurrent.ShoeID"
+                               data-colorid="@Model.ProductCurrent.ColorID"
+                               data-size="-1">Add to Cart</a>
+
                         </div>
+           
                     </div>
                 </div>
             </div>

@@ -1,4 +1,6 @@
-﻿@model ShoesStore.Models.OrdersDetails
+﻿@using ShoesStore.Models.API
+
+@model ShoesStore.Models.OrdersDetails
 
 @{
     ViewBag.Title = "Checkout";
@@ -8,15 +10,18 @@
 <!--================Checkout Area =================-->
 <section class="checkout_area section-margin--small">
     <div class="container">
-        <div class="returning_customer">
-            <div class="check_title">
-                <h2>Returning Customer? <a href="#" data-toggle="modal" data-target="#modalCart">Click here to login</a></h2>
+        @if (ViewBag.UserLogin == null)
+        {
+            <div class="returning_customer">
+                <div class="check_title">
+                    <h2>Returning Customer? <a href="#" data-toggle="modal" data-target="#modalCart">Click here to login</a></h2>
+                </div>
+                <p>
+                    If you have shopped with us before, please enter your details in the boxes below. If you are a new
+                    customer, please proceed to the Billing & Shipping section.
+                </p>
             </div>
-            <p>
-                If you have shopped with us before, please enter your details in the boxes below. If you are a new
-                customer, please proceed to the Billing & Shipping section.
-            </p>
-        </div>
+        }
         <div class="cupon_area">
             <div class="check_title">
                 <h2>Have a coupon? <a href="#">Click here to enter your code</a></h2>
@@ -24,64 +29,67 @@
             <input type="text" placeholder="Enter coupon code">
             <a class="button button-coupon" href="#">Apply Coupon</a>
         </div>
+
         <div class="billing_details">
             <div class="row">
                 <div class="col-lg-8">
                     <h3>Billing Details</h3>
                     <form class="row contact_form" action="#" method="post" novalidate="novalidate">
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="first" name="name">
+                            <input type="text" class="form-control" id="first" name="name" placeholder="First name">
                             <span class="placeholder" data-placeholder="First name"></span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="last" name="name">
+                            <input type="text" class="form-control" id="last" name="name" placeholder="Last name">
                             <span class="placeholder" data-placeholder="Last name"></span>
                         </div>
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="company" name="company" placeholder="Company name">
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="number" name="number">
+                            <input type="text" class="form-control" id="number" name="number" placeholder="Phone number">
                             <span class="placeholder" data-placeholder="Phone number"></span>
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <input type="text" class="form-control" id="email" name="compemailany">
+                            <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email Address">
                             <span class="placeholder" data-placeholder="Email Address"></span>
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">Country</option>
-                                <option value="2">Country</option>
-                                <option value="4">Country</option>
+                            <select class="country_select country_api">
+                                @foreach (Country item in ViewBag.Country)
+                                {
+                                    <option value="@item.CommonName" data-id="@item.Id">@item.CommonName</option>
+                                }
                             </select>
                         </div>
+
                         <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add1" name="add1">
+                            <select class="country_select province_api">
+                                <option value="1">Province</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 form-group p_star">
+                            <select class="country_select district_api">
+                                <option value="1">District</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 form-group p_star">
+                            <select class="country_select ward_api">
+                                <option value="1">Ward</option>
+                                <option value="2">Ward</option>
+                                <option value="4">Ward</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12 form-group p_star">
+                            <input type="text" class="form-control" id="add1" name="add1" placeholder="Notes">
                             <span class="placeholder" data-placeholder="Address line 01"></span>
                         </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="add2" name="add2">
-                            <span class="placeholder" data-placeholder="Address line 02"></span>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <input type="text" class="form-control" id="city" name="city">
-                            <span class="placeholder" data-placeholder="Town/City"></span>
-                        </div>
-                        <div class="col-md-12 form-group p_star">
-                            <select class="country_select">
-                                <option value="1">District</option>
-                                <option value="2">District</option>
-                                <option value="4">District</option>
-                            </select>
-                        </div>
+
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="creat_account">
-                                <input type="checkbox" id="f-option2" name="selector">
-                                <label for="f-option2">Create an account?</label>
-                            </div>
                         </div>
                         <div class="col-md-12 form-group mb-0">
                             <div class="creat_account">
@@ -153,3 +161,70 @@
     </div>
 </section>
 <!--================End Checkout Area =================-->
+
+<script>
+    $("select.country_api").change(function () {
+        var Id = $(this).children("option:selected").data('id')
+        $.ajax({
+            url: '/CountryApi/GetProvinces',
+            data: { Id: Id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    let html = ''
+                    response.provinces.forEach(p => {
+                        html += ` <option value="${p.Name}" data-id="${p.Id}">${p.Name}</option>`
+                    })
+
+                    $('.province_api').html(html)
+                }
+            }
+        });
+    });
+
+</script>
+
+<script>
+    $("select.province_api").change(function () {
+        var Id = $(this).children("option:selected").data('id')
+        $.ajax({
+            url: '/CountryApi/GetDistricts',
+            data: { Id: Id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    let html = ''
+                    response.districts.forEach(p => {
+                        html += ` <option value="${p.Name}" data-id="${p.Id}">${p.Name}</option>`
+                    })
+
+                    $('.district_api').html(html)
+                }
+            }
+        });
+    });
+</script>
+
+<script>
+    $("select.district_api").change(function () {
+        var Id = $(this).children("option:selected").data('id')
+        $.ajax({
+            url: '/CountryApi/GetWards',
+            data: { Id: Id },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                if (response.status == true) {
+                    let html = ''
+                    response.wards.forEach(p => {
+                        html += ` <option value="${p.Name}" data-id="${p.Id}">${p.Name}</option>`
+                    })
+
+                    $('.ward_api').html(html)
+                }
+            }
+        });
+    });
+</script>

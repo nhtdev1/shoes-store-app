@@ -33,7 +33,7 @@ namespace Model.Dao
         {
             ProductDetails pd = new ProductDetails();
             pd.ProductCurrent = db.ProductViews.Where(p=>p.ShoeID == ShoeID && p.ColorID==ColorID).SingleOrDefault();
-            pd.ImageProductList = db.PhotoDescriptions.Where(p => p.ColorID == ColorID).Select(p => p.Image).ToList();
+            pd.ImageProductList = db.PhotoDescriptions.Where(p => p.ColorID == ColorID).Select(p => p.Image).OrderBy(p=>p).ToList();
             pd.SizeProductList = db.ProductSizeViews.Where(p => p.ShoeID == ShoeID).Select(p => p.Number.ToString()).ToList();
 
             pd.OtherColorProductList = db.ProductViews.Where(p => p.ShoeID == ShoeID).ToList();
