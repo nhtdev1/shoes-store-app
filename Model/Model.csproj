@@ -66,6 +66,7 @@
     <Compile Include="EF\Menu.cs" />
     <Compile Include="EF\PayMethod.cs" />
     <Compile Include="EF\PhotoDescription.cs" />
+    <Compile Include="EF\PhotoOfShoesView.cs" />
     <Compile Include="EF\Price.cs" />
     <Compile Include="EF\PriceOfShoesView.cs" />
     <Compile Include="EF\ProductSizeView.cs" />

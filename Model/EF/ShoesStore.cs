@@ -27,6 +27,7 @@ namespace Model.EF
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<PhotoOfShoesView> PhotoOfShoesViews { get; set; }
         public virtual DbSet<PriceOfShoesView> PriceOfShoesViews { get; set; }
         public virtual DbSet<ProductSizeView> ProductSizeViews { get; set; }
         public virtual DbSet<ProductView> ProductViews { get; set; }
@@ -127,6 +128,10 @@ namespace Model.EF
                 .HasMany(e => e.PurchaseOrderDetails)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<PhotoOfShoesView>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
 
             modelBuilder.Entity<ProductSizeView>()
                 .Property(e => e.Number)

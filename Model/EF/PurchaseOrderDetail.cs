@@ -28,6 +28,12 @@ namespace Model.EF
         [Column(TypeName = "numeric")]
         public decimal? Cost { get; set; }
 
+        [StringLength(50)]
+        public string Color { get; set; }
+
+        [Column(TypeName = "numeric")]
+        public decimal? Size { get; set; }
+
         public virtual Shoe Shoe { get; set; }
 
         public virtual User User { get; set; }
