@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace Model.Dao
         {
            return db.TopTrendingViews.OrderByDescending(p => p.LikeNumber).Take(8).ToList();
 
+        }
+
+        public List<BestSellerProduct> GetBestSellerProducts()
+        {
+            return db.BestSellerProducts.OrderByDescending(p => p.Total).ToList();
         }
 
         //Lấy một sản phẩm (kèm với danh sách màu khác) theo ID và ColorID
@@ -55,6 +61,11 @@ namespace Model.Dao
                 listSize.Add(double.Parse(p.ToString()));
             });
             return listSize;
+        }
+
+        public string GetColorName(long ColorID)
+        {
+            return db.Colors.SingleOrDefault(p => p.ColorID == ColorID).ColorName;
         }
     }
 }

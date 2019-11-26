@@ -45,9 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CloudinaryDotNet, Version=1.9.1.0, Culture=neutral, PublicKeyToken=c8234dc617ae7841, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.9.1\lib\net45\CloudinaryDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\CloudinaryDotNet.1.9.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -55,8 +64,16 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.9.1\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\CloudinaryDotNet.1.9.1\lib\net45\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -224,6 +241,8 @@
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\CloudinarySDK.cs" />
+    <Compile Include="Utils\HtmlMvcHelper.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
     <Compile Include="ViewModel\DistrictViewModel.cs" />
     <Compile Include="ViewModel\ProvinceViewModel.cs" />
@@ -1905,6 +1924,8 @@
     <Content Include="Assets\Client2\js\addons\rating.min.js" />
     <Content Include="Assets\Client2\js\bootstrap.js" />
     <Content Include="Assets\Client2\js\bootstrap.min.js" />
+    <Content Include="Assets\Client2\js\cart\update.js" />
+    <Content Include="Assets\Client2\js\category\paging-controller.js" />
     <Content Include="Assets\Client2\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\Client2\js\mdb.js" />
     <Content Include="Assets\Client2\js\mdb.min.js" />
@@ -1920,6 +1941,8 @@
     <Content Include="Assets\Client2\js\modules\waves.js" />
     <Content Include="Assets\Client2\js\modules\wow.js" />
     <Content Include="Assets\Client2\js\popper.min.js" />
+    <Content Include="Assets\Client2\js\product\checkout-controller.js" />
+    <Content Include="Assets\Client2\js\product\product-controller.js" />
     <Content Include="Assets\Client\css\main.css" />
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\css\user.css" />
@@ -1959,128 +1982,13 @@
     <Content Include="Assets\Client\img\blog\post-img1.jpg" />
     <Content Include="Assets\Client\img\blog\post-img2.jpg" />
     <Content Include="Assets\Client\img\blog\prev.jpg" />
-    <Content Include="Assets\Client\img\cart.jpg" />
-    <Content Include="Assets\Client\img\cart\cart1.png" />
-    <Content Include="Assets\Client\img\cart\cart2.png" />
-    <Content Include="Assets\Client\img\cart\cart3.png" />
-    <Content Include="Assets\Client\img\category\c1.jpg" />
-    <Content Include="Assets\Client\img\category\c2.jpg" />
-    <Content Include="Assets\Client\img\category\c3.jpg" />
-    <Content Include="Assets\Client\img\category\c4.jpg" />
-    <Content Include="Assets\Client\img\category\c5.jpg" />
-    <Content Include="Assets\Client\img\category\s-p1.jpg" />
     <Content Include="Assets\Client\img\Fevicon.png" />
-    <Content Include="Assets\Client\img\gallery\r1.jpg" />
-    <Content Include="Assets\Client\img\gallery\r2.jpg" />
-    <Content Include="Assets\Client\img\gallery\r3.jpg" />
-    <Content Include="Assets\Client\img\gallery\r5.jpg" />
-    <Content Include="Assets\Client\img\gallery\r7.jpg" />
-    <Content Include="Assets\Client\img\gallery\r8.jpg" />
-    <Content Include="Assets\Client\img\gallery\vanquan.png" />
     <Content Include="Assets\Client\img\home\hero-banner.png" />
     <Content Include="Assets\Client\img\home\hero-slide1.png" />
     <Content Include="Assets\Client\img\home\hero-slide2.png" />
     <Content Include="Assets\Client\img\home\hero-slide3.png" />
     <Content Include="Assets\Client\img\home\parallax-bg.png" />
-    <Content Include="Assets\Client\img\instagram\Image-01.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-02.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-03.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-04.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-05.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-06.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-07.jpg" />
-    <Content Include="Assets\Client\img\instagram\Image-08.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-1.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-2.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-3.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-4.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-5.jpg" />
-    <Content Include="Assets\Client\img\instagram\ins-6.jpg" />
-    <Content Include="Assets\Client\img\login.jpg" />
     <Content Include="Assets\Client\img\logo.png" />
-    <Content Include="Assets\Client\img\product\1.png" />
-    <Content Include="Assets\Client\img\product\10.png" />
-    <Content Include="Assets\Client\img\product\11.png" />
-    <Content Include="Assets\Client\img\product\12.png" />
-    <Content Include="Assets\Client\img\product\13.png" />
-    <Content Include="Assets\Client\img\product\14.png" />
-    <Content Include="Assets\Client\img\product\15.png" />
-    <Content Include="Assets\Client\img\product\16.png" />
-    <Content Include="Assets\Client\img\product\17.png" />
-    <Content Include="Assets\Client\img\product\18.png" />
-    <Content Include="Assets\Client\img\product\19.png" />
-    <Content Include="Assets\Client\img\product\2.png" />
-    <Content Include="Assets\Client\img\product\20.png" />
-    <Content Include="Assets\Client\img\product\21.png" />
-    <Content Include="Assets\Client\img\product\22.png" />
-    <Content Include="Assets\Client\img\product\23.png" />
-    <Content Include="Assets\Client\img\product\24.png" />
-    <Content Include="Assets\Client\img\product\25.png" />
-    <Content Include="Assets\Client\img\product\26.png" />
-    <Content Include="Assets\Client\img\product\27.png" />
-    <Content Include="Assets\Client\img\product\28.png" />
-    <Content Include="Assets\Client\img\product\29.png" />
-    <Content Include="Assets\Client\img\product\3.png" />
-    <Content Include="Assets\Client\img\product\30.png" />
-    <Content Include="Assets\Client\img\product\31.png" />
-    <Content Include="Assets\Client\img\product\32.png" />
-    <Content Include="Assets\Client\img\product\33.png" />
-    <Content Include="Assets\Client\img\product\34.png" />
-    <Content Include="Assets\Client\img\product\35.png" />
-    <Content Include="Assets\Client\img\product\36.png" />
-    <Content Include="Assets\Client\img\product\37.png" />
-    <Content Include="Assets\Client\img\product\38.png" />
-    <Content Include="Assets\Client\img\product\39.png" />
-    <Content Include="Assets\Client\img\product\4.png" />
-    <Content Include="Assets\Client\img\product\40.png" />
-    <Content Include="Assets\Client\img\product\41.png" />
-    <Content Include="Assets\Client\img\product\42.png" />
-    <Content Include="Assets\Client\img\product\5.png" />
-    <Content Include="Assets\Client\img\product\53.png" />
-    <Content Include="Assets\Client\img\product\6.png" />
-    <Content Include="Assets\Client\img\product\7.png" />
-    <Content Include="Assets\Client\img\product\8.png" />
-    <Content Include="Assets\Client\img\product\9.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React a1.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React a2.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React a3.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React b1.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React b2.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React b3.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React c1.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React c2.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React c3.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React d1.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React d2.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max 270 React d3.png" />
-    <Content Include="Assets\Client\img\product\Nike Air Max.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 a1.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 a2.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 a3.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 b1.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 b2.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 b3.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 c1.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 c2.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 c3.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 d1.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 d2.png" />
-    <Content Include="Assets\Client\img\product\Nike Jordan Why Not Zer02 d3.png" />
-    <Content Include="Assets\Client\img\product\review-1.png" />
-    <Content Include="Assets\Client\img\product\review-2.png" />
-    <Content Include="Assets\Client\img\product\review-3.png" />
-    <Content Include="Assets\Client\img\r1.jpg" />
-    <Content Include="Assets\Client\img\r10.jpg" />
-    <Content Include="Assets\Client\img\r11.jpg" />
-    <Content Include="Assets\Client\img\r12.jpg" />
-    <Content Include="Assets\Client\img\r2.jpg" />
-    <Content Include="Assets\Client\img\r3.jpg" />
-    <Content Include="Assets\Client\img\r4.jpg" />
-    <Content Include="Assets\Client\img\r5.jpg" />
-    <Content Include="Assets\Client\img\r6.jpg" />
-    <Content Include="Assets\Client\img\r7.jpg" />
-    <Content Include="Assets\Client\img\r8.jpg" />
-    <Content Include="Assets\Client\img\r9.jpg" />
     <Content Include="Assets\Client\js\main.js" />
     <Content Include="Assets\Client\js\product\template-product.js" />
     <Content Include="Assets\Client\js\product\update-cart.js" />
@@ -2474,6 +2382,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2544,7 +2453,6 @@
     <Content Include="Assets\Client2\scss\_custom-styles.scss" />
     <Content Include="Assets\Client2\scss\_custom-variables.scss" />
     <Content Include="Assets\Client\img\blog\.DS_Store" />
-    <Content Include="Assets\Client\img\gallery\.DS_Store" />
     <Content Include="Assets\Client\img\Thumbs.db" />
     <Content Include="Assets\Client\scss\main.scss" />
     <Content Include="Assets\Client\scss\style.scss" />
@@ -2863,6 +2771,11 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Login\LoginPartial.cshtml" />
     <Content Include="Views\Login\LoginPopupPartial.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Product\TemplateBestSellerProduct.cshtml" />
+    <Content Include="Views\Product\ProductFilterBarPartial.cshtml" />
+    <Content Include="Views\Product\ProductFilterListPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutListProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

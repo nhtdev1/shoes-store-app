@@ -9,7 +9,6 @@ namespace Model.EF
     public partial class PhotoDescription
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PhotoID { get; set; }
 
         [StringLength(200)]

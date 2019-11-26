@@ -17,7 +17,6 @@ namespace Model.EF
             Sizes = new HashSet<Size>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ShoeID { get; set; }
 
         [StringLength(50)]

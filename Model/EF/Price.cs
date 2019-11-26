@@ -15,7 +15,6 @@ namespace Model.EF
             Colors = new HashSet<Color>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PriceID { get; set; }
 
         public DateTime? DateCreated { get; set; }

@@ -10,7 +10,6 @@ namespace Model.EF
     public partial class Feedback
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long FbID { get; set; }
 
         [StringLength(50)]

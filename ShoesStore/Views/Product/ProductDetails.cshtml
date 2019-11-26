@@ -3,10 +3,6 @@
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
-
-
-@{ Html.RenderAction("BannerPartial", "Home");}
-
 <style>
     /* these styles are for the demo, but are not required for the plugin */
     .zoom {
@@ -42,18 +38,9 @@
         cursor: url(grabbed.cur), default;
     }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script> -->
-<script src='js/jquery.zoom.js'></script>
-<script>
-    $(document).ready(function () {
-        $('#ex1').zoom();
-        $('#ex2').zoom({ on: 'grab' });
-        $('#ex3').zoom({ on: 'click' });
-        $('#ex4').zoom({ on: 'toggle' });
-    });
-</script>
 
+
+@{ Html.RenderAction("BannerPartial", "Home");}
 
 <!--================Single Product Area =================-->
 <div class="product_image_area">
@@ -164,6 +151,7 @@
     </div>
 </div>
 <!--================End Single Product Area =================-->
+
 <!--================Product Description Area =================-->
 <section class="product_description_area">
     <div class="container">
@@ -549,7 +537,5 @@
     </div>
 </section>
 <!--================End Product Description Area =================-->
-
-
 
 @{ Html.RenderAction("TopProductPartial", "Home");}

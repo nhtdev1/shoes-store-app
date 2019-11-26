@@ -27,7 +27,7 @@ namespace ShoesStore.Controllers
                 var result = dao.Login(model.UserName, model.Password);
                 if (result)
                 {
-                    var ac = dao.GetAccount(model.UserName); 
+                    var ac = dao.GetAccount(model.UserName);
                     var user = new UserLogin();
                     user.AccountID = ac.AccID;
                     user.UserID = long.Parse(ac.UserID.ToString());
@@ -54,6 +54,16 @@ namespace ShoesStore.Controllers
         public ActionResult LoginPopupPartial()
         {
             return PartialView(null);
+        }
+
+        [HttpPost]
+        public JsonResult IsLogin()
+        {
+            var userSession = Session[UserSession] as UserLogin;
+            return Json(new
+            {
+                status = userSession == null ? false : true
+            });
         }
     }
 }

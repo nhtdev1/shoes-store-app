@@ -1,10 +1,12 @@
 ﻿@model List<String>
-
-<form action="#">
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li class="filter-list"><input class="pixel-radio" type="radio" name="color"><label for="black">@item</label></li>
-        }
-    </ul>
-</form>
+<div class="common-filter">
+    <div class="head">Color</div>
+    <form action="#">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="filter-list"><input class="pixel-radio" type="radio" name="color"><label for="black">@item</label></li>
+            }
+        </ul>
+    </form>
+</div>

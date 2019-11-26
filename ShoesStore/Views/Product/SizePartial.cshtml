@@ -1,13 +1,15 @@
 ﻿@model List<Model.EF.Size>
+<div class="common-filter">
+    <div class="head">Size</div>
+    <form action="#">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li class="filter-list">
+                    <input class="pixel-radio" type="radio" name="brand"><label for="apple"><span>@item.Number</span></label>
+                </li>
+            }
 
-<form action="#">
-    <ul>
-        @foreach (var item in Model)
-        {
-        <li class="filter-list">
-            <input class="pixel-radio" type="radio" name="brand"><label for="apple"><span>@item.Number</span></label>
-        </li>
-        }
-
-    </ul>
-</form>
+        </ul>
+    </form>
+</div>

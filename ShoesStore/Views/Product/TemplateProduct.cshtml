@@ -1,136 +1,7 @@
 ﻿@model Model.Dao.SingleProductList
 
-<style>
-    #div-template-hover {
-        margin-top: 25px;
-        display: flex;
-    }
-</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        var idtemp;
-        $(".product-block").hover(function (e) {
-            var id = $(this).attr('id');
-            idtemp = id;
-            $("#div-template-hover-" + id).show();
-            $("#div-color-hover-" + id).hide();
-        }, function () {
-            var id = $(this).attr('id');
-            $("#div-template-hover-" + id).hide();
-            $(`#div-color-hover-${id}`).show();
-        });
-
-
-        $(".img-template-hover").hover(function (e) {
-            var model = $(this).attr('src');
-            var ShoeID = $(this).data('id');
-            var ColorID = $(this).data('colorid');
-            console.log(ShoeID + " " + ColorID);
-            $('#img-product-large-' + idtemp).attr('src', model);
-            /*jQuery sẽ tìm nạp giá trị đó từdata-thuộc tính HTML chỉ khi nó không thể tìm thấy giá trị được lưu trữ bên trong. Nếu bạn truy xuất$(el).data('original-title')lại sau khi thay đổi thuộc tính HTML, bạn sẽ thấy nó không bị thay đổi.
-
-Nếu đây là một vấn đề, sử dụng .removeData()phương pháp để xóa giá trị được lưu trữ bên trong. Lần sau khi bạn sử dụng .data(), jQuery sẽ thấy rằng nó bị thiếu và truy xuất data-thuộc tính HTML.*/
-            $('#btn-cart-' + ShoeID).attr('data-colorid', ColorID);
-            $('#btn-cart-' + ShoeID).removeData('colorid');
-            $('#btn-cart-' + ShoeID).data('colorid');
-        }, function () {
-        });
-
-    });
-
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        autoPlayYouTubeModal();
-    });
-
-    function autoPlayYouTubeModal() {
-        var trigger = $('.videoModalTriger');
-        trigger.click(function () {
-            var theModal = $(this).data("target");
-            var videoSRC = $(this).attr("data-videoModal");
-            $(theModal + ' iframe').attr('src', videoSRC);
-            $(theModal).on('hidden.bs.modal', function (e) {
-                $(theModal + ' iframe').attr('src', '');
-            });
-        });
-    };
-</script>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        registerEvents();
-    });
-
-    function registerEvents() {
-        $('.btn-cart').off('click').on('click', function (e) {
-            var ShoeID = $(this).data('id');
-            var ColorID = $(this).data('colorid');
-            $.ajax({
-                url: '/Cart/UpdateQuantity',
-                data: { ShoeID: ShoeID, ColorID: ColorID, quantity: 1, size: 43 },
-                dataType: "json",
-                type: "POST",
-                success: function (response) {
-                    if (response.status == true) {
-                        $('.nav-shop__circle').text(response.total);
-                        let html = "";
-                        response.cart.forEach(el => {
-                            var j = 1;
-                            html += `<tr>
-                                    <td class="w-25">
-                                        <img src="${el.Product.Image}" class="img-fluid img-thumbnail"  alt="Sheep">
-                                    </td>
-                                    <td>${el.Product.Name}</td>
-                                    <td>${el.Product.Price}$</td>
-                                    <td>
-                                        <div class="div-select-size">
-                                          <select class="select-size form-control" style="width:auto">`;
-
-                            el.SizeOther.forEach(p => {
-                                html += ` <option value="${j++}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}">${p}</option>`;
-                            });
-
-                            html += `          </select>
-                                         </div>
-                                      </td>
-                                     <td class="qty"><input type="number" min="1" class="form-control spinner-quantity" id="input1" value="${el.Quantity}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-price="${el.Product.Price}"></td>
-                                    <td class="price-a-product-${el.Product.ShoeID}-${el.Product.ColorID}">${(el.Product.Price * el.Quantity)}$</td>
-                                    <td>
-                                         <div>
-                                        <button class="btn btn-danger btn-sm" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-size="${el.Size}">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </div>
-                                    </td>
-                                </tr>`;
-                        })
-
-                        $(".table-cart tbody").html(html);
-
-                        let html2 = `<h5 >Total: <span class="price text-success cost-of-cart">${response.cost}$</span></h5>`
-                        $(".justify-content-end").html(html2)
-
-                        
-                            if (response.cart.length > 0) {
-                                let html3 = `<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <form action="/Cart/Checkout">
-                    <input type="submit" value="Checkout" class="btn btn-success" />
-                </form>`;
-                                $(".justify-content-between").html(html3);
-                            }
-                    }
-                }
-            });
-        });
-    }
-
-</script>
+@using CloudinaryDotNet
+@using CloudinaryDotNet.Actions
 
 
 <div class="col-md-6 col-lg-4 col-xl-3 product-block" id="@Model.MainProduct.ShoeID">
@@ -210,18 +81,16 @@ Nếu đây là một vấn đề, sử dụng .removeData()phương pháp để
         <!--Modal: modalYT-->
 
         <div class="card-body">
-            <p>Accessories</p>
             <h4 class="card-product__title">@Html.ActionLink(Model.MainProduct.Name, "SingleProduct", "Product", new { ShoeID = Model.MainProduct.ShoeID, ColorID = Model.MainProduct.ColorID }, null)</h4>
-            <p class="card-product__price">@Model.MainProduct.Price</p>
-
+            <p class="card-product__price">@Model.MainProduct.Price$</p>
             <div id="div-color-hover-@Model.MainProduct.ShoeID" style="float: left;"><span>@Model.OtherColorProductList.Count Colors</span></div>
 
             <div id="div-template-hover-@Model.MainProduct.ShoeID" style="display: none;float: left;">
                 @foreach (var value in Model.OtherColorProductList)
                 {
                     <a href="@Url.Action("SingleProduct","Product",new { ShoeID = value.ShoeID, ColorID = value.ColorID })">
-                        <img src="@value.Image" alt="Avatar" width="40" height="40"
-                             style="border-radius: 5%; margin-left: 5px" class="img-template-hover" data-id="@value.ShoeID" data-colorid="@value.ColorID">
+                        <img src="@value.Image" alt="Avatar"
+                             style="width:35px;height:43px" class="img-template-hover" data-id="@value.ShoeID" data-colorid="@value.ColorID">
                     </a>
                 }
             </div>

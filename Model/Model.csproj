@@ -53,6 +53,9 @@
     <Compile Include="Dao\AccountDao.cs" />
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\ColorDao.cs" />
+    <Compile Include="Dao\OrderDao.cs" />
+    <Compile Include="Dao\OrderDetailsDao.cs" />
+    <Compile Include="Dao\PaymentDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\ProductDetails.cs" />
     <Compile Include="Dao\SingleProductList.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\Account.cs" />
     <Compile Include="EF\Authorization.cs" />
+    <Compile Include="EF\BestSellerProduct.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\Color.cs" />
     <Compile Include="EF\Feedback.cs" />

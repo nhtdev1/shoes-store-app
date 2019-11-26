@@ -16,5 +16,20 @@ namespace Model.Dao
             return db.Users.SingleOrDefault(p => p.UserID == ID);
 
         }
+
+        public long Inser(User user)
+        {
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return user.UserID;
+            }
+            catch
+            {
+                return 0;
+            }
+         
+        }
     }
 }

@@ -7,13 +7,15 @@
     <title>
         Nike.com.vn
     </title>
-
 }
+@section jsFooter{
+    <script src="~/Assets/Client/js/select/select-product.js"></script>
+}
+
 
 @{ Html.RenderAction("BannerPartial", "Home");}
 
 @{ Html.RenderAction("DirectoriesPartial", "Home");}
-
 
 @{ Html.RenderAction("TrendingProductPartial", "Home");}
 

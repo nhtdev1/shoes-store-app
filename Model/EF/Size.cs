@@ -15,7 +15,6 @@ namespace Model.EF
             Shoes = new HashSet<Shoe>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long SizeID { get; set; }
 
         [Column(TypeName = "numeric")]

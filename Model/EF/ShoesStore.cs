@@ -27,6 +27,7 @@ namespace Model.EF
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<BestSellerProduct> BestSellerProducts { get; set; }
         public virtual DbSet<PhotoOfShoesView> PhotoOfShoesViews { get; set; }
         public virtual DbSet<PriceOfShoesView> PriceOfShoesViews { get; set; }
         public virtual DbSet<ProductSizeView> ProductSizeViews { get; set; }

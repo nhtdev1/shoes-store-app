@@ -17,7 +17,6 @@ namespace Model.EF
             PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long UserID { get; set; }
 
         [StringLength(30)]

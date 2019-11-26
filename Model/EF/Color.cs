@@ -16,7 +16,6 @@ namespace Model.EF
             Prices = new HashSet<Price>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ColorID { get; set; }
 
         [StringLength(50)]

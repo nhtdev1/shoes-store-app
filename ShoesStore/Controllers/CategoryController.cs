@@ -18,12 +18,12 @@ namespace ShoesStore.Controllers
             return View(model);
         }
 
+
         [ChildActionOnly]
         public ActionResult CategoryPartial()
         {
             var model = new CategoryDao().GetCategory();
             return PartialView(model);
         }
-
     }
 }

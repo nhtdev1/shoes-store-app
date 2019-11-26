@@ -15,7 +15,6 @@ namespace Model.EF
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long PoID { get; set; }
 
         public DateTime? OrderDate { get; set; }

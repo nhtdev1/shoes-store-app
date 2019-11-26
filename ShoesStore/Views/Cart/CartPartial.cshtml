@@ -16,127 +16,10 @@
     }
 </style>
 
-@*<script type="text/javascript">
-        $(document).ready(function () {
-            $('#cartModal').modal('show');
-        });
-    </script>*@
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-@*Trong jQuery, Click () - chỉ đính kèm trình xử lý sự kiện nếu phần tử đã tồn tại trong mã html.
-
-    Nó sẽ không xem xét phần tử mới được tạo động (phần tử Tương lai) sau khi trang được tải.
-
-    Các yếu tố động được tạo ra với sự trợ giúp của javascript hoặc jquery (không phải bằng html) .
-
-    Vì vậy, sự kiện click không kích hoạt.
-
-    Giải pháp :
-
-    Để khắc phục điều này chúng ta nên sử dụng hàm on () .*@
-<script type="text/javascript">
-    $(document).ready(function () {
-        updateCart();
-    });
-    function updateCart() {
-        $(document).on('click', '.btn-danger', function () {
-            var ShoeID = $(this).data('id');
-            var ColorID = $(this).data('colorid');
-            var size = $(this).data('size');
-            console.log(ShoeID + "-" + ColorID);
-            $.ajax({
-                url: '/Cart/UpdateCart',
-                data: { ShoeID: ShoeID, ColorID: ColorID, size: size },
-                dataType: "json",
-                type: "POST",
-                success: function (response) {
-                    if (response.status == true) {
-                        $('.nav-shop__circle').text(response.total);
-                        let html = "";
-                        response.cart.forEach(el => {
-                            var j = 1;
-                            html += `<tr>
-                                    <td class="w-25">
-                                        <img src="${el.Product.Image}" class="img-fluid img-thumbnail"  alt="Sheep">
-                                    </td>
-                                    <td>${el.Product.Name}</td>
-                                    <td>${el.Product.Price}$</td>
-                                    <td>
-                                        <div class="div-select-size">
-                                          <select class="select-size form-control" style="width:auto">`;
-                            el.SizeOther.forEach(p => {
-                                html += ` <option value="${j++}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}">${p}</option>`
-                            });
-                            html += `          </select>
-                                         </div>
-                                      </td>
-                                    <td class="qty"><input type="number" min="1" class="form-control spinner-quantity" id="input1" value="${el.Quantity}" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-price="${el.Product.Price}""></td>
-                                    <td class="price-a-product-${el.Product.ShoeID}-${el.Product.ColorID}">${(el.Product.Price * el.Quantity)}$</td>
-                                    <td>
-                                         <div>
-                                        <button class="btn btn-danger btn-sm" data-id="${el.Product.ShoeID}" data-colorid="${el.Product.ColorID}" data-size="${el.Size}">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                        </div>
-                                    </td>
-                                </tr>`;
-                        })
-
-                        $(".table-cart tbody").html(html);
-
-                        let html2 = `<h5 >Total: <span class="price text-success cost-of-cart">${response.cost}$</span></h5>`
-                        $(".justify-content-end").html(html2)
-                    }
-                }
-            });
-
-        });
-    }
-</script>
-
-<script type="text/javascript">
-
-    $(document).off('change').on('change', '.select-size', function () {
-        var size = $(this).children("option:selected").text();
-        var ShoeID = $(this).children("option:selected").data('id');
-        var ColorID = $(this).children("option:selected").data('colorid');
-        console.log(ShoeID + "-" + ColorID + "-" + size);
-        $.ajax({
-            url: '/Cart/UpdateSize',
-            data: { ShoeID: ShoeID, ColorID: ColorID, NewSize: size },
-            dataType: "json",
-            type: "POST",
-            success: function (response) {
-            }
-        });
-    });
-</script>
-
-<script type="text/javascript">
-    $(document).off('change').on('change', '.spinner-quantity', function () {
-        var quantity = $(this).val();
-        var ShoeID = $(this).data('id');
-        var ColorID = $(this).data('colorid');
-        var Price = $(this).data('price');
-        $('.price-a-product-' + ShoeID + '-' + ColorID).text((quantity * Price) + '$');
-        $.ajax({
-            url: '/Cart/UpdateCost',
-            data: { ShoeID: ShoeID, ColorID: ColorID, quantity: quantity },
-            dataType: "json",
-            type: "POST",
-            success: function (response) {
-                if (response.status == true) {
-                    $('.nav-shop__circle').text(response.total);
-                    $('.cost-of-cart').text(response.cost + '$');
-                }
-            }
-        });
-    });
-</script>
+<script src="~/Assets/Client2/js/jquery-3.4.1.min.js"></script>
+<script src="~/Assets/Client2/js/cart/update.js"></script>
 
 <ul class="nav-shop">
-    <li class="nav-item"><button><i class="ti-search"></i></button></li>
     <li class="nav-item">
         <form action="/Cart/Index" method="get">
             @{
@@ -157,7 +40,7 @@
             }
         </form>
     </li>
-    <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+    <li class="nav-item"><a class="button button-header" href="/Home/Index">Buy Now</a></li>
 </ul>
 
 <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -231,12 +114,12 @@
                     </table>
                 }
                 <div class="d-flex justify-content-end">
-                    <h5>Total: <span class="price text-success cost-of-cart">0$</span></h5>
+                    <h5>Total: <span class="price text-success cost-of-cart">@ViewBag.CostOfCart$</span></h5>
                 </div>
             </div>
 
             <div class="modal-footer border-top-0 d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="visibility:hidden">Close</button>
 
                 @if (Model != null)
                 {

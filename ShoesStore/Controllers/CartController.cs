@@ -87,7 +87,7 @@ namespace ShoesStore.Controllers
         public JsonResult UpdateCart(int ShoeID, int ColorID, double size)
         {
             var listCart = Session[CartSession] as List<CartItem>;
-            listCart.Remove(listCart.Find(p => p.Product.ShoeID == ShoeID 
+            listCart.Remove(listCart.Find(p => p.Product.ShoeID == ShoeID
             && p.Product.ColorID == ColorID
             && p.Size == size));
 
@@ -151,6 +151,16 @@ namespace ShoesStore.Controllers
         public ActionResult CartPartial()
         {
             var model = Session[CartSession] as List<CartItem>;
+            double cost = 0;
+            if (model != null)
+            {
+                model.ForEach(p =>
+                {
+                    cost += p.Quantity * double.Parse(p.Product.Price.ToString());
+                });
+
+            }
+            ViewBag.CostOfCart = cost;
             return PartialView(model);
         }
 
@@ -167,9 +177,69 @@ namespace ShoesStore.Controllers
             var model = new OrdersDetails();
             model.Cart = listCart;
             model.Cost = cost;
+
             ViewBag.UserLogin = Session[UserSession] as UserLogin;
             ViewBag.Country = new CountryClient().findAll().ToList();
+
             return View(model);
+        }
+
+        public ActionResult Payment(string firstName,
+            string lastName,
+            string companyName,
+            string phoneNumber,
+            string emailAddress,
+            string countryName,
+            string provinceName,
+            string districtName,
+            string wardName,
+            string notesInfo,
+            string zipName,
+            string orderNotes,
+            string paymentMethod)
+        {
+            var userSession = Session[UserSession] as UserLogin;
+            long userID;    
+            if (userSession == null)
+            {
+                var user = new User();
+                user.Name = firstName.Trim() + " " + lastName.Trim();
+                user.Email = emailAddress.Trim();
+                user.Phone = phoneNumber.Trim();
+                user.Address = countryName.Trim() + ", " + provinceName.Trim() + ", " + districtName.Trim() + ", " + wardName.Trim();
+                userID = new UserDao().Inser(user);
+
+            }
+            else
+            {
+                userID = userSession.UserID;
+            }
+            var purchaseOrder = new PurchaseOrder();
+            purchaseOrder.OrderDate = DateTime.Now;
+            purchaseOrder.Status = false;
+            purchaseOrder.PayID = int.Parse(paymentMethod);
+            new OrderDao().Insert(purchaseOrder);
+
+            var listCart = Session[CartSession] as List<CartItem>;
+            var odao = new OrderDetailsDao();
+            var pdao = new ProductDao();
+
+            listCart.ForEach(p =>
+            {
+                var value = new PurchaseOrderDetail();
+                value.UserID = userID;
+                value.PoID = purchaseOrder.PoID;
+                value.ShoeID = long.Parse(p.Product.ShoeID.ToString());
+                value.Quantity = p.Quantity;
+                value.Cost = p.Quantity * p.Product.Price;
+                value.Color = pdao.GetColorName(p.Product.ColorID);
+                value.Size = decimal.Parse(p.Size.ToString());
+                odao.Insert(value);
+            });
+
+            Session[CartSession] = null;
+
+            return View();
         }
     }
 }

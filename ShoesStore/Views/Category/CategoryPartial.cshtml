@@ -1,16 +1,27 @@
 ﻿@model List<Model.EF.Category>
 
-<ul class="main-categories">
-    <li class="common-filter">
-        <form action="#">
-            <ul>
-                @foreach (var item in Model)
-                {
-                    <li class="filter-list">@Html.ActionLink(item.CategoryName, "Index", "Category", new { CategoryID = item.CategoryID }, null)</li>
-                }
+<div class="sidebar-categories">
+    <div class="head">Browse Categories</div>
+    <ul class="main-categories">
+        <li class="common-filter">
+            <form action="#">
+                <ul class="categorination">
+                    @foreach (var item in Model)
+                    {
+                        <li class="filter-list"><a href="#" data-categoryid="@item.CategoryID">@item.CategoryName</a></li>
+                    }
 
-            </ul>
-        </form>
+                </ul>
+            </form>
 
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+

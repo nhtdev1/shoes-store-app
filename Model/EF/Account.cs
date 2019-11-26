@@ -19,7 +19,6 @@ namespace Model.EF
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long AccID { get; set; }
 
         [StringLength(50)]

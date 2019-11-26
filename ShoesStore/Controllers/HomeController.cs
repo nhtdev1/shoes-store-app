@@ -37,13 +37,16 @@ namespace ShoesStore.Controllers
         [ChildActionOnly]
         public ActionResult OfferPartial()
         {
-            return PartialView();
+
+            var model = new ProductDao().GetBestSellerProducts();
+            return PartialView(model);
         }
 
         [ChildActionOnly]
         public ActionResult BestSellersPartial()
         {
-            return PartialView();
+            var model = new ProductDao().GetBestSellerProducts();
+            return PartialView(model);
         }
 
         [ChildActionOnly]

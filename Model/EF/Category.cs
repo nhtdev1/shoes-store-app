@@ -16,7 +16,6 @@ namespace Model.EF
             Shoes = new HashSet<Shoe>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CategoryID { get; set; }
 
         [StringLength(50)]

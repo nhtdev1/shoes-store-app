@@ -1,137 +1,21 @@
-﻿<section class="section-margin calc-60px">
+﻿@using Model.EF
+@model List<BestSellerProduct>
+
+
+<section class="section-margin calc-60px">
     <div class="container">
         <div class="section-intro pb-60px">
             <p>Popular Item in the market</p>
             <h2>Best <span class="section-intro__style">Sellers</span></h2>
         </div>
         <div class="owl-carousel owl-theme" id="bestSellerCarousel">
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike  Jordan Why.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">QNike  Jordan Why</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
 
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike Metcon 5.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike Metcon 5</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
+            @foreach (var item in Model)
+            {
+                Html.RenderAction("TemplateBestSellerProduct", "Product", new { ShoeID = item.ShoeID, ColorID = item.ColorID });
 
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike Air Max.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike Air Max</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
+            }
 
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike React Presto.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike React Presto</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
-
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike Air Max 270.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike Air Max 270</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
-
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike Zoom.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike Zoom</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
-
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Air Jordan XXXIV.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Air Jordan XXXIV</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
-
-            <div class="card text-center card-product">
-                <div class="card-product__img">
-                    <img class="img-fluid" src="/Assets/Client/img/product/Nike Drop-Type.png" alt="">
-                    <ul class="card-product__imgOverlay">
-                        <li><button><i class="ti-search"></i></button></li>
-                        <li><button><i class="ti-shopping-cart"></i></button></li>
-                        <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <p>Accessories</p>
-                    <h4 class="card-product__title"><a href="single-product.html">Nike Drop-Type</a></h4>
-                    <p class="card-product__price">$150.00</p>
-                </div>
-            </div>
         </div>
     </div>
 </section>

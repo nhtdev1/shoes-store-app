@@ -7,6 +7,7 @@
 
     <link rel="icon" href="/Assets/Client/img/Fevicon.png" type="image/png">
     <link rel="stylesheet" href="/Assets/Client2/css/bootstrap.min.css" />
+
     <link rel="stylesheet" href="/Assets/Client/vendors/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/Assets/Client/vendors/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="/Assets/Client/vendors/nice-select/nice-select.css">
@@ -22,9 +23,8 @@
 
     <!--================ Start Header Menu Area =================-->
     <header class="header_area">
-        
+
         @{ Html.RenderAction("LoginPopupPartial", "Login");}
-        @*Html.Partial("_LoginPopupPartial")*@
 
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -74,8 +74,6 @@
                         @{ Html.RenderAction("CartPartial", "Cart");}
                     </div>
 
-
-                    @*@Html.Partial("_LoginPartial")*@
                     @{ Html.RenderAction("LoginPartial", "Login");}
 
                 </div>
@@ -182,12 +180,13 @@
     <script src="/Assets/Client2/js/jquery-3.4.1.min.js"></script>
     <script src="/Assets/Client2/js/bootstrap.min.js"></script>
     <script src="/Assets/Client/vendors/skrollr.min.js"></script>
-
     <script src="/Assets/Client/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/vendors/nice-select/jquery.nice-select.min.js"></script>
     <script src="/Assets/Client/vendors/nouislider/nouislider.min.js"></script>
     <script src="/Assets/Client/vendors/jquery.ajaxchimp.min.js"></script>
     <script src="/Assets/Client/vendors/mail-script.js"></script>
     <script src="/Assets/Client/js/main.js"></script>
+    <script src="~/Assets/Client2/js/product/product-controller.js"></script>
 
     @RenderSection("jsFooter", required: false);
 </body>
