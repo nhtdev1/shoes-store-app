@@ -14,7 +14,7 @@ namespace ShoesStore.Controllers
         public const string UserSession = "UserSession";
 
         // GET: User
-        public ActionResult Profile()
+        public ActionResult ViewProfile()
         {
             var user = Session[UserSession] as UserLogin;
             User model = null;

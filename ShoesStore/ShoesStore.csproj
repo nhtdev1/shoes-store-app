@@ -2757,15 +2757,15 @@
     <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Product\SingleProduct.cshtml" />
-    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\User\ViewProfile.cshtml" />
     <Content Include="Views\User\EditProfile.cshtml" />
     <Content Include="Views\User\ResetPassword.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPopupPartial.cshtml" />
     <Content Include="Views\Category\CategoryPartial.cshtml" />
-    <Content Include="Views\Product\SizePartial.cshtml" />
-    <Content Include="Views\Product\ColorPartial.cshtml" />
-    <Content Include="Views\Product\PricePartial.cshtml" />
+    <Content Include="Views\Category\SizePartial.cshtml" />
+    <Content Include="Views\Category\ColorPartial.cshtml" />
+    <Content Include="Views\Category\PricePartial.cshtml" />
     <Content Include="Views\Product\TemplateProduct.cshtml" />
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
@@ -2773,8 +2773,8 @@
     <Content Include="Views\Login\LoginPopupPartial.cshtml" />
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Product\TemplateBestSellerProduct.cshtml" />
-    <Content Include="Views\Product\ProductFilterBarPartial.cshtml" />
-    <Content Include="Views\Product\ProductFilterListPartial.cshtml" />
+    <Content Include="Views\Category\ProductFilterBarPartial.cshtml" />
+    <Content Include="Views\Category\ProductFilterListPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutListProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>

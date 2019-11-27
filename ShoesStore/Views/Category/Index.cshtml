@@ -15,19 +15,19 @@
                 <div class="sidebar-filter">
                     <div class="top-filter-head">Product Filters</div>
 
-                    @{ Html.RenderAction("SizePartial", "Product");}
+                    @{ Html.RenderAction("SizePartial", "Category");}
 
-                    @{ Html.RenderAction("ColorPartial", "Product");}
+                    @{ Html.RenderAction("ColorPartial", "Category");}
 
-                    @{ Html.RenderAction("PricePartial", "Product");}
+                    @{ Html.RenderAction("PricePartial", "Category");}
 
                 </div>
             </div>
 
             <div class="col-xl-9 col-lg-8 col-md-7">
-                @{ Html.RenderAction("ProductFilterBarPartial", "Product");}
+                @{ Html.RenderAction("ProductFilterBarPartial", "Category");}
 
-                @{ Html.RenderAction("ProductFilterListPartial", "Product");}
+                @{ Html.RenderAction("ProductFilterListPartial", "Category");}
 
                 <!-- End Best Seller -->
             </div>

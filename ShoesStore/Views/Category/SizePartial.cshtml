@@ -1,0 +1,50 @@
+﻿@model List<Model.EF.Size>
+
+<!--Accordion wrapper-->
+<div class="md-accordion accordion" id="accordionEy">
+
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo">
+            <label>Size</label>
+            <a data-toggle="collapse" data-parent="#accordionEy" href="#collapseTwo" aria-expanded="true"
+               aria-controls="collapseTwo" style="float:right">
+                <i class="fas fa-angle-down rotate-icon"></i>
+            </a>
+
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+            <div style="display:flex; flex-wrap:wrap;" class="card-body common-filter">
+                @foreach (var item in Model)
+                {
+                    <div class="my-size-card" data-size="@item.Number">
+                        @item.Number
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--/.Accordion wrapper-->
+
+<style>
+    .my-size-card {
+        background: white;
+        color: black;
+        margin: 1%;
+        padding: 3% 7%;
+        text-align: center;
+        flex: 1;
+        width: 30%;
+        border-radius: 3px;
+    }
+
+    .my-size-card:hover {
+       background-color:#007bff;
+       cursor:pointer;
+    }
+</style>

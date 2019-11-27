@@ -1,10 +1,17 @@
-﻿
-$(document).ready(function () {
-    var load = function (page, CategoryID) {
+﻿$(document).ready(function () {
+    var a_categoryId = "";
+    var a_size = "";
+    var a_colorName = "";
+    var a_contentSearch = "";
+    var a_order = "1";
+    var a_range_price = "";
+    var conditions = [a_categoryId, a_size, a_colorName, a_contentSearch, a_order, a_range_price];
+
+    var load = function (page, conditions) {
         $.ajax({
-            url: '/Product/ProductPagination',
+            url: '/Category/ProductPagination',
             type: "POST",
-            data: { page: page, CategoryID: CategoryID },
+            data: { page: page, conditions: conditions },
             dataType: 'json',
             success: function (result) {
                 //create pagination
@@ -48,26 +55,77 @@ $(document).ready(function () {
                 $("#load-pagination").html(pagination_string);
                 $("#load-data").html(result.data);
 
-                $('#navigationListProduct').remove('data-categoryid');
-                $('#navigationListProduct').attr('data-categoryid', result.categoryid);
+
             }
         });
     }
 
 
-    $("body").on("click", ".pagination li a", function (event) {
+    $(document).on("click", ".pagination li a", function (event) {
         event.preventDefault();
         var page = $(this).attr('data-page');
-        var category = $('#navigationListProduct').data('categoryid');
-        load(page, category);
+        load(page, conditions);
     });
 
-    $("body").on("click", ".categorination li a", function (event) {
+    $(document).on("click", ".categorination li a", function (event) {
         event.preventDefault();
-        var CategoryID = $(this).attr('data-categoryid');
-        load(1, CategoryID);
+        conditions[0] = $(this).attr('data-categoryid');
+        conditions[1] = "";
+        conditions[2] = "";
+        conditions[3] = "";
+        load(1, conditions);
     });
 
-    load(1, 1);
+    $(document).on('click', '.my-size-card', function (e) {
+        conditions[1] = $(this).data('size');
+        load(1, conditions);
+    });
+
+    $(document).on('click', '.my-color-card', function (e) {
+        conditions[2] = $(this).children('.my-label-color').text().toLowerCase();
+        load(1, conditions);
+    });
+
+    $(document).on('click', '.button-search-product', function (e) {
+        if (conditions[3] != "") {
+            load(1, conditions);
+            $('.input-search-product').val("");
+        }
+    });
+
+    $(document).on('change', '.input-search-product', function (e) {
+        conditions[3] = $(this).val().trim().toLowerCase();
+    });
+
+    $(document).on('change', '.select-product-filter', function (e) {
+        conditions[4] = $(this).val();
+        load(1, conditions);
+    });
+
+    var slider = document.getElementById('price-range');
+    slider.noUiSlider.destroy();
+    noUiSlider.create(slider, {
+        start: [50, 100],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 300
+        },
+        step: 5
+    });
+    slider.noUiSlider.on('update', function () {
+        var model = slider.noUiSlider.get();
+        $('#lower-value').text(model[0]);
+        $('#upper-value').text(model[1]);
+        conditions[5] = model[0] + "-" + model[1];
+    });
+
+    slider.noUiSlider.on('change', function () {
+        load(1, conditions);
+        conditions[5] = "";
+    });
+
+    load(1, conditions);
 });
+
 

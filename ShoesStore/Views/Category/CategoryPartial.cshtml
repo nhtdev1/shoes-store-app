@@ -6,6 +6,7 @@
         <li class="common-filter">
             <form action="#">
                 <ul class="categorination">
+                    <li class="filter-list"><a href="#" data-categoryid="">ALL</a></li>
                     @foreach (var item in Model)
                     {
                         <li class="filter-list"><a href="#" data-categoryid="@item.CategoryID">@item.CategoryName</a></li>

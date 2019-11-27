@@ -83,9 +83,10 @@
         <div class="card-body">
             <h4 class="card-product__title">@Html.ActionLink(Model.MainProduct.Name, "SingleProduct", "Product", new { ShoeID = Model.MainProduct.ShoeID, ColorID = Model.MainProduct.ColorID }, null)</h4>
             <p class="card-product__price">@Model.MainProduct.Price$</p>
+
             <div id="div-color-hover-@Model.MainProduct.ShoeID" style="float: left;"><span>@Model.OtherColorProductList.Count Colors</span></div>
 
-            <div id="div-template-hover-@Model.MainProduct.ShoeID" style="display: none;float: left;">
+            <div id="div-template-hover-@Model.MainProduct.ShoeID" style="display: none;float: left;position:absolute">
                 @foreach (var value in Model.OtherColorProductList)
                 {
                     <a href="@Url.Action("SingleProduct","Product",new { ShoeID = value.ShoeID, ColorID = value.ColorID })">

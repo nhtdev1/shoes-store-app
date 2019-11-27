@@ -12,5 +12,6 @@ namespace Model.Dao
         public ProductView MainProduct { get; set; }
 
         public List<ProductView> OtherColorProductList { get; set; }
+
     }
 }

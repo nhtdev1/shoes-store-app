@@ -10,10 +10,5 @@ namespace Model.Dao
     public class ColorDao
     {
         ShoesStore db = new ShoesStore();
-
-        public List<String> GetAllColor()
-        {
-            return db.Colors.Select(p => p.ColorName).Distinct().ToList();
-        }
     }
 }
