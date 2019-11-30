@@ -102,6 +102,10 @@
         load(1, conditions);
     });
 
+  
+
+    load(1, conditions);
+
     var slider = document.getElementById('price-range');
     slider.noUiSlider.destroy();
     noUiSlider.create(slider, {
@@ -124,8 +128,6 @@
         load(1, conditions);
         conditions[5] = "";
     });
-
-    load(1, conditions);
 });
 
 
