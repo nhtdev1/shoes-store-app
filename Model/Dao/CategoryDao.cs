@@ -43,12 +43,10 @@ namespace Model.Dao
                     .AsEnumerable()
                     .Where(p => matchCategory(p, conditions[0])).ToList();
             }
-
             if (!conditions[1].Trim().Equals(""))
             {
                 model = model.Where(p => matchSize(p, conditions[1])).ToList();
             }
-
             if (conditions[2].Trim().ToLower().Equals("multi-colour"))
             {
                 model = model.Where(p => p.ColorName.Split(' ').Length > 1).ToList();
@@ -57,13 +55,10 @@ namespace Model.Dao
             {
                 model = model.Where(p => matchColor(p, conditions[2])).ToList();
             }
-
-
             if (!conditions[3].Trim().Equals(""))
             {
                 model = model.Where(p => matchContent(p, conditions[3])).ToList();
             }
-
             if (!conditions[5].Trim().Equals(""))
             {
                 var arrayPrice = conditions[5].Trim().Split('-');
@@ -112,7 +107,7 @@ namespace Model.Dao
             return template.ColorName.Trim().ToLower().Contains(colorName);
         }
 
-        bool matchContent(TemplateProductView template, string content)
+        public bool matchContent(TemplateProductView template, string content)
         {
             return template.Name.Trim().ToLower().Contains(content) ||
                 template.Descriptions.Trim().ToLower().Contains(content);

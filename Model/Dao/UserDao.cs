@@ -17,7 +17,7 @@ namespace Model.Dao
 
         }
 
-        public long Inser(User user)
+        public long Insert(User user)
         {
             try
             {

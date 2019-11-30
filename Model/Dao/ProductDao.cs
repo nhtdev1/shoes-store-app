@@ -63,6 +63,7 @@ namespace Model.Dao
             return listSize;
         }
 
+
         public string GetColorName(long ColorID)
         {
             return db.Colors.SingleOrDefault(p => p.ColorID == ColorID).ColorName;

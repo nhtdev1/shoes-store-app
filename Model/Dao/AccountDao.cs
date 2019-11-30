@@ -22,7 +22,11 @@ namespace Model.Dao
 
         public Account GetAccount(string username)
         {
+            if (username == null)
+                throw new ArgumentNullException();
+
             return db.Accounts.SingleOrDefault(p => p.UserName.Equals(username) || p.Email.Equals(username));
+
         }
     }
 }

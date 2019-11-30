@@ -207,7 +207,7 @@ namespace ShoesStore.Controllers
                 user.Email = emailAddress.Trim();
                 user.Phone = phoneNumber.Trim();
                 user.Address = countryName.Trim() + ", " + provinceName.Trim() + ", " + districtName.Trim() + ", " + wardName.Trim();
-                userID = new UserDao().Inser(user);
+                userID = new UserDao().Insert(user);
 
             }
             else
