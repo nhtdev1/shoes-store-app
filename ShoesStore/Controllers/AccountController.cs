@@ -334,7 +334,8 @@ namespace ShoesStore.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return Redirect(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -390,10 +391,10 @@ namespace ShoesStore.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(string ReturnUrl)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return Redirect(ReturnUrl);
         }
 
         //

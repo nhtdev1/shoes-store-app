@@ -1,0 +1,56 @@
+﻿
+
+    button.chatbox-open {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 52px;
+        height: 52px;
+        color: #fff;
+        background-color: #0360a5;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.15);
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 16px;
+    }
+
+    button.chatbox-close {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 52px;
+        height: 52px;
+        color: #fff;
+        background-color: #0360a5;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.15);
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        margin: 16px calc(2 * 16px + 52px) 16px 16px;
+    }
+
+
+.chatbox-popup {
+    display: flex;
+    position: fixed;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+    flex-direction: column;
+    display: none;
+    bottom: calc(2 * 16px + 52px);
+    right: 16px;
+    height: auto;
+    background-color: #fff;
+    text-align: center;
+}
+
+    .chatbox-popup iframe {
+        border: none;
+    }

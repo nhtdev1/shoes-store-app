@@ -15,10 +15,11 @@ namespace ShoesStore.Controllers
         public ActionResult Index()
         {
 
+
             return View();
         }
 
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(LoginModel model,string ReturnUrl)
         {
             var dao = new AccountDao();
             if (ModelState.IsValid)
@@ -34,25 +35,33 @@ namespace ShoesStore.Controllers
                     user.UserName = ac.UserName;
                     user.Email = ac.Email;
                     Session.Add(UserSession, user);
-                    return RedirectToAction("Index", "Home");
+                    return Redirect(ReturnUrl);
                 }
                 else
                 {
                     ModelState.AddModelError("", "The account or password does not exist");
                 }
             }
-            return Redirect("/Home/Index");
+            return Redirect(ReturnUrl);
 
         }
 
-        public ActionResult LoginPartial()
+        public ActionResult LogOut(string ReturnUrl)
         {
+            Session[UserSession] = null;
+
+            return Redirect(ReturnUrl);
+        }
+        public ActionResult LoginPartial(string ReturnUrl)
+        {
+            ViewBag.ReturnUrl = ReturnUrl;
             var user = Session[UserSession] as UserLogin;
             return PartialView(user);
         }
 
-        public ActionResult LoginPopupPartial()
+        public ActionResult LoginPopupPartial(string ReturnUrl)
         {
+            ViewBag.ReturnUrl = ReturnUrl;
             return PartialView(null);
         }
 

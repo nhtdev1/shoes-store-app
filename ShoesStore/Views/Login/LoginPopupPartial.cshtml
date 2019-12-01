@@ -48,7 +48,7 @@
                                             {
                                                 className = "fab fa-facebook-f";
                                             }
-                                            <button type="submit" class="@className" id="@p.AuthenticationType" name="provider" title="Log in using your @p.Caption account"></button>
+                                            <button type="submit" class="@className" id="@p.AuthenticationType" value="@p.AuthenticationType" name="provider" title="Log in using your @p.Caption account"></button>
                                         }
                                     </p>
                                 </div>
@@ -56,7 +56,7 @@
 
                         }
 
-                        using (Html.BeginForm("Login", "Login", FormMethod.Post, new { style = "padding:20px;" }))
+                        using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl },FormMethod.Post,new { style = "padding:20px;" }))
                         {
 
                             <span>or use your account</span>

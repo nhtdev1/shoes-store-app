@@ -1885,6 +1885,7 @@
     <Content Include="Assets\Client2\css\addons\zmd.hierarchical-display.min.css" />
     <Content Include="Assets\Client2\css\bootstrap.css" />
     <Content Include="Assets\Client2\css\bootstrap.min.css" />
+    <Content Include="Assets\Client2\css\chat\chat-bot.css" />
     <Content Include="Assets\Client2\css\mdb.css" />
     <Content Include="Assets\Client2\css\mdb.lite.css" />
     <Content Include="Assets\Client2\css\mdb.lite.min.css" />
@@ -1926,6 +1927,7 @@
     <Content Include="Assets\Client2\js\bootstrap.min.js" />
     <Content Include="Assets\Client2\js\cart\update.js" />
     <Content Include="Assets\Client2\js\category\paging-controller.js" />
+    <Content Include="Assets\Client2\js\chat\chat-bot.js" />
     <Content Include="Assets\Client2\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\Client2\js\mdb.js" />
     <Content Include="Assets\Client2\js\mdb.min.js" />
@@ -2801,7 +2803,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CountryApi\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
