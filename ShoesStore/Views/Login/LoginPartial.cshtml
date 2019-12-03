@@ -8,7 +8,7 @@
         @Html.AntiForgeryToken()
 
         <div class="dropdown">
-            <img style="width:50px;height:50px;border-radius:50%;background-color:chartreuse;border-color:blue;" />
+            <img style="width:40px;height:40px;border-radius:50%;background-color:chartreuse;border-color:blue;" />
 
             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style="background:transparent">
@@ -39,17 +39,16 @@ else
             @Html.AntiForgeryToken()
 
             <div class="dropdown">
-                <img style="width:50px;height:50px;border-radius:50%;background-color:chartreuse;border-color:blue;" />
+                <img style="width:40px;height:40px;border-radius:50%;border:none;"src="~/Assets/Client/img/blog/author.png" />
 
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu5" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false" style="background:transparent">
-                    @Html.ActionLink(Model.Email, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "Account" })
+                        aria-haspopup="true" aria-expanded="false" style="background:transparent;border:none">
+                    @Html.ActionLink(Model.Email.ToLower(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "Account" })
 
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu5">
-                    <a class="dropdown-item" href="/User/Profile">Manage My Accout</a>
+                    <a class="dropdown-item" href="/User/ViewProfile">Manage My Accout</a>
                     <a class="dropdown-item" href="#">My Orders</a>
-                    <a class="dropdown-item disabled" href="#">Disabled</a>
                     <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
                 </div>
             </div>

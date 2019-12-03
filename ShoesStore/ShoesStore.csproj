@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CountryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\CloudinarySDK.cs" />
     <Compile Include="Utils\HtmlMvcHelper.cs" />
+    <Compile Include="Utils\MailHelper.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
     <Compile Include="ViewModel\DistrictViewModel.cs" />
     <Compile Include="ViewModel\ProvinceViewModel.cs" />
@@ -1871,6 +1873,9 @@
     <Content Include="Assets\Admin\webfonts\fa-light-300.svg" />
     <Content Include="Assets\Admin\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Admin\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Client2\barcode\barcode.mp3" />
+    <Content Include="Assets\Client2\barcode\prism.js" />
+    <Content Include="Assets\Client2\barcode\quagga.js" />
     <Content Include="Assets\Client2\css\addons\datatables-select.css" />
     <Content Include="Assets\Client2\css\addons\datatables-select.min.css" />
     <Content Include="Assets\Client2\css\addons\datatables.css" />
@@ -1943,6 +1948,7 @@
     <Content Include="Assets\Client2\js\modules\waves.js" />
     <Content Include="Assets\Client2\js\modules\wow.js" />
     <Content Include="Assets\Client2\js\popper.min.js" />
+    <Content Include="Assets\Client2\barcode\barcode-scanner.js" />
     <Content Include="Assets\Client2\js\product\checkout-controller.js" />
     <Content Include="Assets\Client2\js\product\product-controller.js" />
     <Content Include="Assets\Client\css\main.css" />
@@ -2725,7 +2731,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -2755,7 +2760,7 @@
     <Content Include="Views\Home\BestSellersPartial.cshtml" />
     <Content Include="Views\Home\BlogPartial.cshtml" />
     <Content Include="Views\Home\SubscribePartial.cshtml" />
-    <Content Include="Views\Home\TopProductPartial.cshtml" />
+    <Content Include="Views\Home\ViewedProductsPartial.cshtml" />
     <Content Include="Views\Product\ProductDetails.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Product\SingleProduct.cshtml" />
@@ -2778,6 +2783,10 @@
     <Content Include="Views\Category\ProductFilterBarPartial.cshtml" />
     <Content Include="Views\Category\ProductFilterListPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutListProduct.cshtml" />
+    <Content Include="Views\Product\BarcodeScanner.cshtml" />
+    <Content Include="Views\Shared\_LayoutProductBarcode.cshtml" />
+    <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

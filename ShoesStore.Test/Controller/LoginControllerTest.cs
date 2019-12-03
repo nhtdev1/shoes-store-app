@@ -24,13 +24,13 @@ namespace ShoesStore.Test.Controller
         public void WhenModelStateOfLoginControllerNotExistThenThrowException()
         {
 
-            Assert.Throws<NullReferenceException>(() => loginController.Login(null));
+            Assert.Throws<NullReferenceException>(() => loginController.Login(null,null));
         }
 
         [Test]
         public void IfUserInLoginPartialIsNotExistThenThrowException()
         {
-            Assert.Throws<NullReferenceException>(() => loginController.LoginPartial());
+            Assert.Throws<NullReferenceException>(() => loginController.LoginPartial(null));
         }
 
         [Test]

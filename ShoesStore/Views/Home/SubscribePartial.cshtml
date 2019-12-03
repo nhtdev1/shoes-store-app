@@ -1,17 +1,17 @@
 ﻿<section class="subscribe-position">
     <div class="container">
         <div class="subscribe text-center">
-            <h3 class="subscribe__title">Nhận thông tin mới nhất từ chúng tôi</h3>
+            <h3 class="subscribe__title">GET UPDATE FROM ANYWHERE</h3>
             <p>Bearing Void gathering light light his eavening unto dont afraid</p>
             <div id="mc_embed_signup">
-                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe-form form-inline mt-5 pt-1">
+                <form target="_blank" action="#" method="get" class="subscribe-form form-inline mt-5 pt-1">
                     <div class="form-group ml-sm-auto">
-                        <input class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
-                        <div class="info"></div>
+                        <input id="email-subscribe" class="form-control mb-1" type="email" name="EMAIL" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Email Address '">
+                        <div class="info" id="reply-email"></div>
                     </div>
-                    <button class="button button-subscribe mr-auto mb-1" type="submit">Theo dõi ngay</button>
+                    <button class="button button-subscribe mr-auto mb-1" type="submit">Subscribe Now</button>
                     <div style="position: absolute; left: -5000px;">
-                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+                        <input  tabindex="-1" value="" type="text">
                     </div>
 
                 </form>
@@ -20,3 +20,19 @@
         </div>
     </div>
 </section>
+<script>
+   /* $('.button-subscribe').on('click', function (e) {
+        var toEmailAddress = document.getElementById("email-subscribe").value;
+         $.ajax({
+                type: "POST",
+                url: '/Contact/ReplaySubscribe',
+                data: { toEmailAddress: toEmailAddress },
+                dataType: 'json',
+                success: function (result) {
+                    if (result.status == true) {
+                        $('#reply-email').text("Thank you for subscribing, please check your email.");
+                    }
+                }
+            });
+    });*/
+</script>

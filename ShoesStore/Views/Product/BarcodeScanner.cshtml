@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "BarcodeScanner";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<style>
+    #deviceSelection {
+        display: block;
+        width: 100%;
+        background: #f1f6f7;
+        border: 1px solid #eeeeee;
+        height: 40px;
+        color: #999999;
+        margin-bottom: 20px;
+        clear: none;
+    }
+      .viewport video, .viewport canvas {
+        width: 100%;
+        border: solid thin;
+    }
+</style>
+
+@section jsFooter{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.11.6/quagga.js"></script>
+    <script src="~/Assets/Client2/barcode/barcode-scanner.js"></script>
+
+}
+
+<section class="container mb-5">
+    <div style="width: 70%;" class="float-right py-5">
+
+        <div class="my-product ml-3">
+            <div class="d-flex" style="align-items:center" id="load-product-barcode">
+                <h5 class="m-5" id="scan-barcode-guide">Press the scan button to start searching products</h5>
+                <button type="submit" id="button-scan-barcode">Scan</button>
+
+                <ul id="ul-scan-barcode" style="margin-left:100px;margin-top:80px;display:none">
+                    <li><h4>1. Bring the code on the product close to the camera</h4></li>
+                    <li><h4>2. When you hear the 'beep' sound. That means the product is found</h4></li>
+                    <li><h4>3. Compare your product with ours</h4></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="width: 30%;">
+        <h3 style="padding-top:10px">Code scan</h3>
+        <div class="my-dropdown" tabindex="0">
+            <span>Camera</span>
+            <select name="input-stream_constraints" id="deviceSelection">
+            </select>
+        </div>
+    </div>
+
+    <div style="width: 30%;">
+        <button type="submit" id="button-scan-barcode-reload" style="margin-bottom:10px;display:none">Rescan</button>
+        <div id="interactive" class="viewport">
+        </div>
+
+        <audio controls="controls" id="audio-barcode" hidden>
+            <source src="~/Assets/Client2/barcode/barcode.mp3" type="audio/mpeg" />
+        </audio>
+    </div>
+
+</section>
+
+

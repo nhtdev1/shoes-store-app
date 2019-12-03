@@ -46,7 +46,15 @@ namespace Model.Dao
 
             return pd;
         }
- 
+
+        public ProductDetails GetProductBarcode(int ColorID)
+        {
+            ProductDetails pd = new ProductDetails();
+            pd.ProductCurrent = db.ProductViews.Where(p => p.ColorID == ColorID).SingleOrDefault();
+            pd.ImageProductList = db.PhotoDescriptions.Where(p => p.ColorID == ColorID).Select(p => p.Image).OrderBy(p => p).ToList();
+            return pd;
+        }
+
         public ProductView GetProduct(int ShoeID, int ColorID)
         {
             return db.ProductViews.Where(p => p.ColorID == ColorID && p.ShoeID == ShoeID).SingleOrDefault();

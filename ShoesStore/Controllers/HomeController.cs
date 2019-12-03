@@ -62,10 +62,19 @@ namespace ShoesStore.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult TopProductPartial()
+        public ActionResult ViewedProductsPartial()
         {
             return PartialView();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult Blog()
+        {
+            return View();
+        }
     }
 }

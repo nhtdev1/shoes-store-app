@@ -82,4 +82,3 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\Microsoft.CodeDom
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.pdb
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache

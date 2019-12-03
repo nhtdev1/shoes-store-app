@@ -53,5 +53,30 @@ namespace ShoesStore.Controllers
             });
         }
 
+        public ActionResult BarcodeScanner()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetBarcode(string code)
+        {
+            bool status = false;
+            string data = "<h4>No results found, please scan again</h4>";
+            if (!code.Trim().Equals(""))
+            {
+                var model = new ProductDao().GetProductBarcode(int.Parse(code));
+
+                data = HtmlMvcHelper.RenderViewToString(ControllerContext,
+                        "~/Views/Shared/_LayoutProductBarcode.cshtml",
+                        model, true);
+                status = true;
+            }
+            return Json(new
+            {
+                data = data,
+                status = status,
+            });;
+        }
     }
 }

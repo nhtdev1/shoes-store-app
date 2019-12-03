@@ -106,7 +106,7 @@
 
     load(1, conditions);
 
-    var slider = document.getElementById('price-range');
+    /*var slider = document.getElementById('price-range');
     slider.noUiSlider.destroy();
     noUiSlider.create(slider, {
         start: [50, 100],
@@ -127,7 +127,7 @@
     slider.noUiSlider.on('change', function () {
         load(1, conditions);
         conditions[5] = "";
-    });
+    });*/
 });
 
 
