@@ -25,10 +25,10 @@ namespace ShoesStore.Controllers
             if (ModelState.IsValid)
             {
 
-                var result = dao.Login(model.UserName, model.Password);
+                var result = dao.Login(model.Email, model.Password);
                 if (result)
                 {
-                    var ac = dao.GetAccount(model.UserName);
+                    var ac = dao.GetAccount(model.Email);
                     var user = new UserLogin();
                     user.AccountID = ac.AccID;
                     user.UserID = long.Parse(ac.UserID.ToString());
@@ -72,6 +72,35 @@ namespace ShoesStore.Controllers
             return Json(new
             {
                 status = userSession == null ? false : true
+            });
+        }
+
+        [HttpPost]
+        public JsonResult SignUp(string email, string password)
+        {
+            var _acc = new AccountDao().GetAccount(email);
+            bool res = false;
+            string message = "";
+            if (_acc != null)
+            {
+                message = "Email already exists";
+            }
+            else
+            {
+                res = new AccountDao().SignUp(email, password);
+                if(res == true)
+                {
+                    message = "Register Successfully";
+                }
+                else
+                {
+                    message = "Register failed";
+                }
+            }
+            return Json(new
+            {
+                message = message,
+                status = res
             });
         }
     }

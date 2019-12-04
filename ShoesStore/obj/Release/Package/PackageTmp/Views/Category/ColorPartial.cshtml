@@ -1,0 +1,98 @@
+﻿<!--Accordion wrapper-->
+<div class="md-accordion accordion" id="accordionEx">
+
+    <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne">
+            <label class="my-label-color">Colour</label>
+            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true"
+               aria-controls="collapseOne" style="float:right">
+                <i class="fas fa-angle-down rotate-icon"></i>
+            </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div style="display:flex; flex-wrap: wrap;" class="card-body common-filter">
+
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(141, 66, 159);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Purple</label>
+                </div>
+
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(0, 0, 0);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Black</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(231, 53, 43);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Red</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(243, 107, 38);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Orange</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(23, 144, 200);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Blue</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(255, 255, 255);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">White</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(130, 93, 65);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Brown</label>
+                </div>
+
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(123, 186, 60);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Green</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(254, 213, 51);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Yellow</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Multi-Colour</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(128, 128, 128);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Gray</label>
+                </div>
+                <div class="my-color-card">
+                    <div class="my-color" style="background-color: rgb(240, 114, 143);"></div>
+                    <label class="my-label-color" style="font-size:smaller;">Pink</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--/.Accordion wrapper-->
+<style>
+    .my-color-card {
+        flex: 1;
+        padding: 5px;
+        flex-basis: 30%;
+        text-align: center;
+    }
+
+     .my-color-card:hover {
+        cursor:pointer;
+    }
+
+      .my-label-color:hover {
+        cursor:pointer;
+        color:#007bff;
+    }
+    .my-color {
+        width: 35px;
+        height: 35px;
+        border-radius: 100%;
+        margin: 0 auto;
+    }
+</style>
+

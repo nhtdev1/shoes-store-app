@@ -1,0 +1,13 @@
+﻿@using Model.EF
+@model List<TemplateProductView>
+
+<section class="lattest-product-area pb-40 category-list">
+    <div class="row load-data">
+        @foreach (var item in Model)
+        {
+            Html.RenderAction("TemplateProduct", "Product", new { ShoeID = item.ShoeID, ColorID = item.ColorID });
+        }
+
+    </div>
+</section>
+

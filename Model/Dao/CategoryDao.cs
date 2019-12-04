@@ -113,6 +113,14 @@ namespace Model.Dao
                 template.Descriptions.Trim().ToLower().Contains(content);
         }
 
+        public int GetProductTotal(int categoryId)
+        {
+            if (categoryId == 0) return db.ProductViews.Count();
+            else
+            {
+                return db.ProductViews.Where(p => p.CategoryID == categoryId).Count();
+            }
+        }
         private class SortPriceLowToHigh : IComparer<TemplateProductView>
         {
             public int Compare(TemplateProductView x, TemplateProductView y)

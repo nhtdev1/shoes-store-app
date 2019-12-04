@@ -9,7 +9,7 @@ namespace ShoesStore.Models
     public class LoginModel
     {
         [Required(ErrorMessage = "Please input username")]
-        public string UserName { get; set; }
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Please input password")]
         public string Password { get; set; }

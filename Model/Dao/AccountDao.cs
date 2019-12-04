@@ -28,5 +28,52 @@ namespace Model.Dao
             return db.Accounts.SingleOrDefault(p => p.UserName.Equals(username) || p.Email.Equals(username));
 
         }
+
+        public Account GetByID(long ID)
+        {
+            return db.Accounts.SingleOrDefault(a => a.AccID == ID);
+        }
+
+        public bool ChangePass(long accID, string newPass)
+        {
+            try
+            {
+                var _acc = db.Accounts.Find(accID);
+                _acc.Password = newPass;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool SignUp(string email, string password)
+        {
+            try
+            {
+                var user = db.Users.Add(new User()
+                {
+                    Email = email
+                });
+                db.SaveChanges();
+
+                var acc = db.Accounts.Add(new Account()
+                {
+                    Email = email,
+                    Password = password,
+                    Status = true,
+                    UserID = user.UserID
+                    
+                });
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

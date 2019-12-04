@@ -29,6 +29,12 @@ namespace ShoesStore.Controllers
         [ChildActionOnly]
         public ActionResult CategoryPartial()
         {
+            var dao = new CategoryDao();
+
+            ViewBag.All = dao.GetProductTotal(0);
+            ViewBag.MEN = dao.GetProductTotal(1);
+            ViewBag.WOMEN = dao.GetProductTotal(2);
+            ViewBag.KIDS = dao.GetProductTotal(3);
             var model = new CategoryDao().GetCategory();
             return PartialView(model);
         }

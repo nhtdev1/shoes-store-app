@@ -245,6 +245,7 @@
     <Compile Include="Utils\CloudinarySDK.cs" />
     <Compile Include="Utils\HtmlMvcHelper.cs" />
     <Compile Include="Utils\MailHelper.cs" />
+    <Compile Include="Utils\ProductsLogHelper.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
     <Compile Include="ViewModel\DistrictViewModel.cs" />
     <Compile Include="ViewModel\ProvinceViewModel.cs" />
@@ -1931,7 +1932,10 @@
     <Content Include="Assets\Client2\js\bootstrap.js" />
     <Content Include="Assets\Client2\js\bootstrap.min.js" />
     <Content Include="Assets\Client2\js\cart\update.js" />
+    <Content Include="Assets\Client2\js\category\carousel.js" />
     <Content Include="Assets\Client2\js\category\paging-controller.js" />
+    <Content Include="Assets\Client2\js\category\prism.js" />
+    <Content Include="Assets\Client2\js\category\quagga.js" />
     <Content Include="Assets\Client2\js\chat\chat-bot.js" />
     <Content Include="Assets\Client2\js\jquery-3.4.1.min.js" />
     <Content Include="Assets\Client2\js\mdb.js" />
@@ -2708,6 +2712,7 @@
     <Content Include="Areas\Admin\Views\Home\Column.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Column2.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Column3.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

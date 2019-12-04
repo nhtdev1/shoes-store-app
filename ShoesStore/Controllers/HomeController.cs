@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+using ShoesStore.Utils;
 
 namespace ShoesStore.Controllers
 {
@@ -64,7 +65,8 @@ namespace ShoesStore.Controllers
         [ChildActionOnly]
         public ActionResult ViewedProductsPartial()
         {
-            return PartialView();
+            
+            return PartialView(ProductsLogHelper.history);
         }
 
         public ActionResult Contact()

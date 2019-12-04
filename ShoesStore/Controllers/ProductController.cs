@@ -18,6 +18,8 @@ namespace ShoesStore.Controllers
     public class ProductController : Controller
     {
         // GET: Product
+        public const string ViewedProducts = "ViewedProducts";
+
         public ActionResult ProductDetails()
         {
             return View();
@@ -26,6 +28,14 @@ namespace ShoesStore.Controllers
         public ActionResult SingleProduct(int ShoeID, int ColorID)
         {
             var model = new ProductDao().GetProductDetails(ShoeID, ColorID);
+
+            var productLog = new ProductDao().GetTemplateProduct(ShoeID, ColorID);
+
+            if (!ProductsLogHelper.history.Exists(p=>p.MainProduct.ColorID == productLog.MainProduct.ColorID))
+            {
+                ProductsLogHelper.history.Add(productLog);
+            }
+
             return View(model);
         }
 

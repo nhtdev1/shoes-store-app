@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+
+<!-- ================ category section start ================= -->
+<section class="section-margin--small mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+
+                @{ Html.RenderAction("CategoryPartial", "Category");}
+
+                <div class="sidebar-filter">
+                    <div class="top-filter-head">Product Filters</div>
+
+                    @{ Html.RenderAction("SizePartial", "Category");}
+
+                    @{ Html.RenderAction("ColorPartial", "Category");}
+
+                    @{ Html.RenderAction("PricePartial", "Category");}
+
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                @{ Html.RenderAction("ProductFilterBarPartial", "Category");}
+
+                @{ Html.RenderAction("ProductFilterListPartial", "Category");}
+
+                <!-- End Best Seller -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ category section end ================= -->
+
+@{ Html.RenderAction("ViewedProductsPartial", "Home");}
+
+
+@{ Html.RenderAction("SubscribePartial", "Home");}
+
+
+@section jsFooter{
+    <script src="~/Assets/Client2/js/category/paging-controller.js"></script>
+}
+

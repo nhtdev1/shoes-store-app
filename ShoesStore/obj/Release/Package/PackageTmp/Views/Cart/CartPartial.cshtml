@@ -1,0 +1,143 @@
+﻿@model List<ShoesStore.Models.CartItem>
+
+<style>
+
+    .price {
+        margin-left: 1rem;
+    }
+
+    .modal-footer {
+        padding-top: 0rem;
+    }
+
+    .modal-body {
+        max-height: calc(100vh - 210px);
+        overflow-y: auto;
+    }
+</style>
+
+<script src="~/Assets/Client2/js/jquery-3.4.1.min.js"></script>
+<script src="~/Assets/Client2/js/cart/update.js"></script>
+
+<ul class="nav-shop">
+    <li class="nav-item">
+        <form action="/Cart/Index" method="get">
+            @{
+                if (Model != null)
+                {
+                    var number = 0;
+                    Model.ForEach(p =>
+                    {
+                        number += p.Quantity;
+                    });
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal"><i class="ti-shopping-cart"></i><span class="nav-shop__circle">@number</span></button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal"><i class="ti-shopping-cart"></i><span class="nav-shop__circle">0</span></button>
+                }
+
+            }
+        </form>
+    </li>
+    <li class="nav-item"><a class="button button-header" href="/Home/Index">Buy Now</a></li>
+</ul>
+
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Your Shopping Cart
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                @{
+                    <table class="table table-image table-cart">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+
+                        @if (Model != null)
+                        {
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var j = 1;
+                                    <tr>
+                                        <td class="w-25">
+                                            <img src="@item.Product.Image" class="img-fluid img-thumbnail" alt="Sheep">
+                                        </td>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.Product.Price$</td>
+                                        <td>
+                                            <div class="div-select-size">
+                                                <select class="select-size form-control" style="width:auto">
+                                                    @foreach (var vl in item.SizeOther)
+                                                    {
+                                                        <option value="@(j++)" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID">@vl</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td class="qty"><input type="number" min="1" class="form-control spinner-quantity" id="input1" value="@item.Quantity" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID" data-price="@item.Product.Price"></td>
+                                        <td class="price-a-product-@item.Product.ShoeID-@item.Product.ColorID">@(item.Product.Price * item.Quantity)$</td>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-danger btn-sm" data-id="@item.Product.ShoeID" data-colorid="@item.Product.ColorID" data-size="@item.Size">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        }
+                        else
+                        {
+                            <tbody>
+                            </tbody>
+                        }
+                    </table>
+                }
+                <div class="d-flex justify-content-end">
+                    <h5>Total: <span class="price text-success cost-of-cart">@ViewBag.CostOfCart$</span></h5>
+                </div>
+            </div>
+
+            <div class="modal-footer border-top-0 d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="visibility:hidden">Close</button>
+
+                @if (Model != null)
+                {
+                    if (Model.Count > 0)
+                    {
+                        <form action="/Cart/Checkout">
+                            <input type="submit" value="Checkout" class="btn btn-success" />
+                        </form>
+                    }
+                }
+                else
+                {
+                    <form action="#">
+                        <input type="button" value="Checkout" class="btn btn-success" />
+                    </form>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
