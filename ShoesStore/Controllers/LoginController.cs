@@ -105,10 +105,7 @@ namespace ShoesStore.Controllers
                 status = res
             });
         }
-<<<<<<< HEAD
 
-=======
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
         [HttpGet]
         public ActionResult ForgotPass(string email, string password)
         {

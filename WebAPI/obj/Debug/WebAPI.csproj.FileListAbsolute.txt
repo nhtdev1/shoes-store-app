@@ -1,3 +1,4 @@
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.ValueTuple.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\WebAPI.dll.config
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\WebAPI.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\WebAPI.pdb
@@ -37,7 +38,6 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Sec
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Security.Principal.Windows.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.ValueTuple.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Xml.XmlDocument.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\roslyn\System.Xml.XPath.dll
@@ -79,6 +79,7 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\System.Web.WebPag
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\System.Web.WebPages.Razor.xml
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\Antlr3.Runtime.pdb
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\WebAPI\obj\Debug\WebAPI.pdb

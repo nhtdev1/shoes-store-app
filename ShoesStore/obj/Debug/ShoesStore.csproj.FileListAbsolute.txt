@@ -1,4 +1,3 @@
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.dll.config
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.pdb
@@ -37,6 +36,7 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Cryptography.Primitives.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Principal.Windows.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.ValueTuple.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Xml.XmlDocument.dll
