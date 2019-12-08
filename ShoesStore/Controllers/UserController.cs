@@ -20,11 +20,12 @@ namespace ShoesStore.Controllers
             User model = null;
             if (user != null)
             {
-               model = new UserDao().GetUser(user.UserID);
+                model = new UserDao().GetUser(user.UserID);
             }
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult EditProfile()
         {
             var user = Session[UserSession] as UserLogin;
@@ -35,10 +36,56 @@ namespace ShoesStore.Controllers
             }
             return View(model);
         }
+        [HttpPost]
+        public ActionResult EditProfile(User user)
+        {
 
+            bool res = new UserDao().Edit(user);
+            return View(user);
+        }
+
+        [HttpGet]
         public ActionResult ResetPassword()
         {
-            return View();
+            var user = Session[UserSession] as UserLogin;
+            Account model = null;
+            if (user != null)
+            {
+                model = new AccountDao().GetAccount(user.UserName);
+            }
+            return View(model);
         }
+
+        [HttpPost]
+        public ActionResult ResetPassword(long accID, string oldPass, string newPass, string newPass2)
+        {
+            ViewBag.Message = "";
+            var acc = new AccountDao().GetByID(accID);
+            if (acc.Password != oldPass)
+            {
+                ViewBag.Message = "Wrong current password";
+                ModelState.AddModelError("", "Wrong current password");
+            }
+            else
+            if (newPass != newPass2)
+            {
+                ViewBag.Message = "Please verify new password";
+            }
+            else
+            {
+                bool res = new AccountDao().ChangePass(accID, newPass);
+                if(res == true)
+                {
+                    ViewBag.Message = "Change password succesfully";
+                }
+                else
+                {
+                    ViewBag.Message = "Change password failed";
+
+                }
+            }
+            return View(acc);
+        }
+
     }
 }

@@ -1,0 +1,20 @@
+﻿@using Model.EF
+@model List<TopTrendingView>
+
+<section class="section-margin calc-60px">
+    <div class="container">
+        <div class="section-intro pb-60px">
+            <p>Popular Item in the market</p>
+            <h2>Trending <span class="section-intro__style">Product</span></h2>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                Html.RenderAction("TemplateProduct", "Product", new { ShoeID = item.ShoeID, ColorID = item.ColorID });
+
+            }
+
+        </div>
+    </div>
+</section>

@@ -11,50 +11,49 @@
     <div class="container">
         <div id="user-pf-wrapper">
             <div id="left-panel-user">
-                <div id="avatar-name">
-                    <img src="./img/gallery/r2.jpg" alt="">
-                    <label class="font-weight-bold">@Model.Name</label>
+                <div id="avatar-name" class="text-center">
+                    <img class="d-block mt-5" src="/Assets/Client/img/blog/author.png" />
+                    <label class="pb-5 mt-4">@Model.Name</label>
                 </div>
-                <ul>
-                    <li>
-                        <a href="#"><span><i class="fas fa-home"></i></span> Account overview</a>
-                    </li>
-                    <li>
-                        <a href="/User/EditProfile"><span><i class="fas fa-pen"></i></span> Edit profile</a>
-                    </li>
-                    <li>
-                        <a href="/User/ResetPassword"><span><i class="fas fa-lock"></i></span> Change password</a>
-                    </li>
-                    <li>
-                        <a href="#"><span><i class="fas fa-shopping-cart"></i></span> My cart</a>
-                    </li>
-                </ul>
+
+                <div class="left-item">
+                    <a class="my-3" href="/User/ViewProfile"><span><i class="ti-home mr-3"></i></span> Account overview</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="/User/EditProfile"><span><i class="ti-pencil mr-3"></i></span> Edit profile</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="/User/ResetPassword"><span><i class="ti-lock mr-3"></i></span> Change password</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="#"><span><i class="ti-shopping-cart mr-3"></i></span> My cart</a>
+                </div>
             </div>
             <div id="right-panel-user">
                 <div class="user-info">
-                    <label class="font-weight-bold">Account overview</label>
+                    <h2 class="mb-5">Account overview</h2>
                     @if (Model != null)
                     {
                         <table>
                             <tr>
                                 <td class="field"><label>User name</label></td>
-                                <td><label>@Model.Name</label></td>
+                                <td><label class="black-cell">@Model.Name</label></td>
                             </tr>
                             <tr>
                                 <td><label>Email</label></td>
-                                <td><label>@Model.Email</label></td>
+                                <td><label class="black-cell">@Model.Email</label></td>
                             </tr>
                             <tr>
                                 <td><label>Phone number</label></td>
-                                <td><label>@Model.Phone</label></td>
+                                <td><label class="black-cell">@Model.Phone</label></td>
                             </tr>
                             <tr>
                                 <td><label>Date of birth</label></td>
-                                <td><label>@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")</label></td>
+                                <td><label class="black-cell">@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")</label></td>
                             </tr>
                         </table>
                     }
-                    <a style="width:auto" id="edit-pf" class="button button-paypal" href="/User/EditProfile">EDIT PROFILE</a>
+                    <a style="width:auto" id="edit-pf" class="button my-5" href="/User/EditProfile">EDIT PROFILE</a>
                 </div>
 
             </div>
@@ -62,4 +61,3 @@
 
     </div>
 </section>
-

@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="icon" href="/Assets/Client/img/Fevicon.png" type="image/png">
+    <link rel="stylesheet" href="/Assets/Client2/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/Assets/Client/vendors/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/Assets/Client/vendors/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="/Assets/Client/vendors/nice-select/nice-select.css">
+    <link rel="stylesheet" href="/Assets/Client/vendors/owl-carousel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Assets/Client/vendors/owl-carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Assets/Client/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="/Assets/Client/css/style.css">
+    <link href="~/Assets/Client2/css/chat/chat-bot.css" rel="stylesheet" />
+
+    @RenderSection("sectionHeader", required: false)
+
+</head>
+<body>
+
+    <!--================ ChatBot =================-->
+    <button class="chatbox-open" style="z-index:120">
+        <i class="fab fa-facebook-messenger fa-2x" aria-hidden="true"></i>
+    </button>
+    <button class="chatbox-close" style="z-index:120">
+        <i class="fas fa-times fa-2x" aria-hidden="true"></i>
+    </button>
+    <section class="chatbox-popup" style="z-index:120">
+        <iframe width="350" height="430" allow="microphone;"
+                src="https://console.dialogflow.com/api-client/demo/embedded/7ccf2a2d-23e9-4110-a700-04796eed890b"
+                id="chat-frame" style="visibility:visible;">
+        </iframe>
+    </section>
+
+    <!--================ Start Header Menu Area =================-->
+    <header class="header_area">
+
+        @{ Html.RenderAction("LoginPopupPartial", "Login", new { ReturnUrl = Request.Url.ToString() });}
+
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand logo_h" href="/Home/Index"><img src="/Assets/Client/img/logo.png" alt=""></a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+                            <li class="nav-item active"><a class="nav-link" href="/Home/Index">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Category/Index">Category</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Home/Blog">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalCart">Log In</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Contact/Contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Product/BarcodeScanner">Scanning</a></li>
+                        </ul>
+                        @{ Html.RenderAction("CartPartial", "Cart");}
+                    </div>
+
+                    @{ Html.RenderAction("LoginPartial", "Login", new { ReturnUrl = Request.Url.ToString() });}
+
+                </div>
+
+            </nav>
+
+        </div>
+
+
+    </header>
+    <!--================ End Header Menu Area =================-->
+    @RenderBody()
+    <!--================ Start footer Area  =================-->
+    <footer>
+        <div class="footer-area">
+            <div class="container">
+                <div class="row section_gap">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title large_title">Our Mission</h4>
+                            <p>
+                                So seed seed green that winged cattle in. Gathering thing made fly you're no
+                                divided deep moved us lan Gathering thing us land years living.
+                            </p>
+                            <p>
+                                So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
+                            </p>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Quick Links</h4>
+                            <ul class="list">
+                                <li><a href="/Home/Index">Home</a></li>
+                                <li><a href="/Category/Index">Category</a></li>
+                                <li><a href="/Home/Blog">Blog</a></li>
+                                <li><a href="/Contact/Contact">Contact</a></li>
+                                <li><a href="/Product/BarcodeScanner">Scanning</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget instafeed">
+                            <h4 class="footer_title">Gallery</h4>
+                            <ul class="list instafeed d-flex flex-wrap">
+  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="ml-40">
+                                <p class="sm-head">
+                                    <span class="fa fa-location-arrow"></span>
+                                    Head Office
+                                </p>
+                                <p>01, Vo Van Ngan, Tp. Ho Chi Minh</p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-phone"></span>
+                                    Phone Number
+                                </p>
+                                <p>
+                                    +123 456 7890 <br>
+                                    +123 456 7890
+                                </p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    Email
+                                </p>
+                                <p>
+                                    blv.tu97@gmail.com <br>
+                                    www.shoestore.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://google.com" target="_blank">Group 16</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->
+
+
+
+    <script src="/Assets/Client2/js/jquery-3.4.1.min.js"></script>
+    <script src="/Assets/Client2/js/bootstrap.min.js"></script>
+    <script src="/Assets/Client/vendors/skrollr.min.js"></script>
+    <script src="/Assets/Client/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="~/Assets/Client/vendors/nice-select/jquery.nice-select.min.js"></script>
+    <script src="/Assets/Client/vendors/nouislider/nouislider.min.js"></script>
+    <script src="/Assets/Client/vendors/jquery.ajaxchimp.min.js"></script>
+    <script src="/Assets/Client/vendors/mail-script.js"></script>
+    <script src="/Assets/Client/js/main.js"></script>
+    <script src="~/Assets/Client2/js/product/product-controller.js"></script>
+    <script src="~/Assets/Client2/js/chat/chat-bot.js"></script>
+    @RenderSection("jsFooter", required: false);
+</body>
+</html>

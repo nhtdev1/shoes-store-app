@@ -25,7 +25,6 @@ namespace Model.EF
         public virtual DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public virtual DbSet<Shoe> Shoes { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
-        public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<BestSellerProduct> BestSellerProducts { get; set; }
         public virtual DbSet<PhotoOfShoesView> PhotoOfShoesViews { get; set; }
@@ -103,14 +102,6 @@ namespace Model.EF
             modelBuilder.Entity<Size>()
                 .Property(e => e.Number)
                 .HasPrecision(18, 1);
-
-            modelBuilder.Entity<Slide>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Slide>()
-                .Property(e => e.Link)
-                .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Gender)

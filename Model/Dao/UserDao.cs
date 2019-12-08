@@ -31,5 +31,24 @@ namespace Model.Dao
             }
          
         }
+
+        public bool Edit(User user)
+        {
+            try
+            {
+                var _user = db.Users.Find(user.UserID);
+                _user.Name = user.Name;
+                _user.Email = user.Email;
+                _user.DayOfBirth = user.DayOfBirth;
+                _user.Phone = user.Phone;
+                _user.Address = user.Address;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

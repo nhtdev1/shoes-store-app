@@ -4,12 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+using ShoesStore.Models;
+using ShoesStore.Utils;
 
 namespace ShoesStore.Controllers
 {
 
     public class HomeController : Controller
     {
+        public const string UserSession = "UserSession";
+
         public ActionResult Index()
         {
             return View();
@@ -64,7 +68,8 @@ namespace ShoesStore.Controllers
         [ChildActionOnly]
         public ActionResult ViewedProductsPartial()
         {
-            return PartialView();
+            
+            return PartialView(ProductsLogHelper.history);
         }
 
         public ActionResult Contact()

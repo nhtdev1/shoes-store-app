@@ -30,7 +30,7 @@ namespace ShoesStore.Test.Controller
         [Test]
         public void IfUserInLoginPartialIsNotExistThenThrowException()
         {
-            Assert.Throws<NullReferenceException>(() => loginController.LoginPartial(null));
+            Assert.Throws<NullReferenceException>(() => loginController.LoginSuccessfullyPartial(null));
         }
 
         [Test]

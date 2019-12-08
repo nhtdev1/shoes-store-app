@@ -1,0 +1,21 @@
+﻿@using Model.EF
+@model List<BestSellerProduct>
+
+
+<section class="section-margin calc-60px">
+    <div class="container">
+        <div class="section-intro pb-60px">
+            <p>Popular Item in the market</p>
+            <h2>Best <span class="section-intro__style">Sellers</span></h2>
+        </div>
+        <div class="owl-carousel owl-theme" id="bestSellerCarousel">
+
+            @foreach (var item in Model)
+            {
+                Html.RenderAction("TemplateBestSellerProduct", "Product", new { ShoeID = item.ShoeID, ColorID = item.ColorID });
+
+            }
+
+        </div>
+    </div>
+</section>

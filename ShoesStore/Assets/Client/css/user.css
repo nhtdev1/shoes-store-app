@@ -1,57 +1,82 @@
-#user-pf-wrapper{
+#left-panel-user {
+    float: left;
+    color: white;
+    background: #384aeb;
+    width: 25%;
+}
+
+.left-item {
+    border-top: solid 0.25px #6170ff;
+}
+
+    .left-item a {
+        color: white;
+        font-size: medium;
+        margin-left: 20px;
+    }
+
+    .left-item i {
+        font-size: large;
+    }
+
+#avatar-name img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+#avatar-name label {
+    font-size: medium;
+    text-transform: uppercase;
+    color: white;
+}
+
+#user-pf-wrapper {
     display: flex;
 }
-.user-pf-wrapper .font-weight-bold{
+
+
+.user-pf-wrapper .font-weight-bold {
     font-size: 18px;
 }
-#user-pf-wrapper table{
+
+#user-pf-wrapper table {
     margin: 30px 0 30px 0;
 }
-#user-pf-wrapper tr{
+
+#user-pf-wrapper tr {
     height: 70px;
     border-bottom: solid 1px rgb(175, 175, 175);
 }
-#user-pf-wrapper .field{
+
+#user-pf-wrapper .field {
     padding-right: 200px;
 }
-#left-panel-user{
-    float: left;
-    color: white;
-    background-color: rgb(71, 71, 71);
-    width: 300px;
-    margin: 0;
-    padding: 30px 0 30px 0;
-}
-#left-panel-user #avatar-name{
-    text-align: center;
-    margin:30px auto;
-}
-#left-panel-user img{
-    display: block;
-    border-radius: 100%;
-    margin:0 auto;
-}
-#left-panel-user ul{
-    width: 70%;
-    margin:0 auto;
-}
-#left-panel-user a{
-    color: white;
-}
-.user-pf-wrapper .font-weight-bold{
+
+
+
+
+.user-pf-wrapper .font-weight-bold {
     font-size: 18px;
 }
-#right-panel-user{
+
+#right-panel-user {
     flex: 1;
     float: right;
-    background-color: rgb(243, 243, 243);
-    padding: 150px 0 150px 0;
+    background-color: rgb(251, 251, 251);
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
-#right-panel-user button{
-    width: 150px;
-    margin: 20px 20px 0 0;
+
+    #right-panel-user table {
+        width: 100%;
+    }
+
+.black-cell {
+    color: black;
 }
-.user-info{
+
+.user-info {
     width: 70%;
     margin: 0 auto;
 }

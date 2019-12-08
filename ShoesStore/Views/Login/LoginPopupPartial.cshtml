@@ -18,10 +18,9 @@
                             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="text" placeholder="Name" id="input" />
-                        <input type="email" placeholder="Email" id="input" />
-                        <input type="password" placeholder="Password" id="input" />
-                        <button>Sign Up</button>
+                        <input type="email" placeholder="Email" id="input" class="email-input" />
+                        <input type="password" placeholder="Password" id="input" class="password-input" />
+                        <button type="button" id="btn-sign-up">Sign Up</button>
                     </form>
                 </div>
 
@@ -56,14 +55,14 @@
 
                         }
 
-                        using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl },FormMethod.Post,new { style = "padding:20px;" }))
+                        using (Html.BeginForm("Login", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { style = "padding:20px;" }))
                         {
 
                             <span>or use your account</span>
-                            @Html.TextBoxFor(model => model.UserName, new { id = "input", placeholder = "Email" });
+                            @Html.TextBoxFor(model => model.Email, new { id = "input", placeholder = "Email" });
                             @Html.PasswordFor(model => model.Password, new { id = "input", placeholder = "Password" });
                             @Html.ValidationSummary(false, "", "error");
-                            <a href="#">Forgot your password?</a>
+                            <a href="/login/forgotpass">Forgot your password?</a>
                             <button type="submit">Sign In</button>
                         }
                     }
@@ -89,3 +88,22 @@
         </div>
     </div>
 </div>
+<script src="/Assets/Client2/js/jquery-3.4.1.min.js"></script>
+
+<script>
+    $('#btn-sign-up').on('click', function () {
+        var email = $('.email-input').val();
+        var password = $('.password-input').val();
+        $.ajax({
+            url: '/Login/SignUp',
+            data: { email: email, password: password },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+
+                alert(response.message);
+
+            }
+        });
+    });
+</script>

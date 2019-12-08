@@ -1,0 +1,65 @@
+﻿@model Model.EF.User
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<link href="~/Assets/Client/css/user.css" rel="stylesheet" />
+
+<section>
+    <div class="container">
+        <div id="user-pf-wrapper">
+            <div id="left-panel-user">
+                <div id="avatar-name">
+                    <img src="./img/gallery/r2.jpg" alt="">
+                    <label class="font-weight-bold">@Model.Name</label>
+                </div>
+                <ul>
+                    <li>
+                        <a class="p-3" href="#"><span><i class="fas fa-home"></i></span> Account overview</a>
+                    </li>
+                    <li>
+                        <a class="p-3" href="/User/EditProfile"><span><i class="fas fa-pen"></i></span> Edit profile</a>
+                    </li>
+                    <li>
+                        <a class="p-3" href="/User/ResetPassword"><span><i class="fas fa-lock"></i></span> Change password</a>
+                    </li>
+                    <li>
+                        <a class="p-3" href="#"><span><i class="fas fa-shopping-cart"></i></span> My cart</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="right-panel-user">
+                <div class="user-info">
+                    <label class="font-weight-bold">Account overview</label>
+                    @if (Model != null)
+                    {
+                        <table>
+                            <tr>
+                                <td class="field"><label>User name</label></td>
+                                <td><label>@Model.Name</label></td>
+                            </tr>
+                            <tr>
+                                <td><label>Email</label></td>
+                                <td><label>@Model.Email</label></td>
+                            </tr>
+                            <tr>
+                                <td><label>Phone number</label></td>
+                                <td><label>@Model.Phone</label></td>
+                            </tr>
+                            <tr>
+                                <td><label>Date of birth</label></td>
+                                <td><label>@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")</label></td>
+                            </tr>
+                        </table>
+                    }
+                    <a style="width:auto" id="edit-pf" class="button button-paypal" href="/User/EditProfile">EDIT PROFILE</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
