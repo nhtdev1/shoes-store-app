@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -15,6 +16,8 @@ namespace ShoesStore.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public const string UserSession = "UserSession";
+
         private ApplicationSignInManager _signInManager;
 
         private ApplicationUserManager _userManager;
@@ -334,8 +337,12 @@ namespace ShoesStore.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    //return RedirectToLocal(returnUrl);
-                    return Redirect(returnUrl);
+                    {//return RedirectToLocal(returnUrl);
+                        var user = new UserLogin();
+                        user.UserName = User.Identity.GetUserName();
+                        Session.Add(UserSession, user);
+                        return Redirect(returnUrl);                    
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -376,7 +383,11 @@ namespace ShoesStore.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        
+                       await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        var us = new UserLogin();
+                        user.UserName = User.Identity.GetUserName();
+                        Session.Add(UserSession, us);
                         return RedirectToLocal(returnUrl);
                     }
                 }
@@ -394,6 +405,7 @@ namespace ShoesStore.Controllers
         public ActionResult LogOff(string ReturnUrl)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session[UserSession] = null;
             return Redirect(ReturnUrl);
         }
 

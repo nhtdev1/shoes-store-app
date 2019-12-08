@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+<<<<<<< HEAD
+=======
+using ShoesStore.Models;
+>>>>>>> update linh tinh
 using ShoesStore.Utils;
 
 namespace ShoesStore.Controllers
@@ -11,6 +15,8 @@ namespace ShoesStore.Controllers
 
     public class HomeController : Controller
     {
+        public const string UserSession = "UserSession";
+
         public ActionResult Index()
         {
             return View();

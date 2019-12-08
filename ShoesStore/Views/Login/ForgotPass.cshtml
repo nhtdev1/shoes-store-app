@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<title>Reset your password</title>
+
+<div class="container">
+    <h2 class="py-3">Forgot password</h2>
+
+    <div><label id="err-noti"></label></div>
+
+    <div id="email-div">
+        <label class="d-block">Enter your email to receive  verification code</label>
+        <input class="my-input" type="email" id="email-receive" />
+        <span> <button class="button button-header ml-3" id="btn-receive">Receive</button> </span>
+    </div>
+
+</div>
+
+<style>
+    .my-input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 0 0 20px 0;
+        width: 500px;
+    }
+
+    #err-noti{
+        color:red;
+    }
+</style>
+
+<script>
+    $('#btn-receive').on('click', function (e) {
+        var toEmailAddress = document.getElementById("email-receive").value;
+        $.ajax({
+            type: "POST",
+            url: '/Login/SendVeriCode',
+            data: { toEmailAddress: toEmailAddress },
+            dataType: 'json',
+            success: function (result) {
+                if (result.status == true) {
+
+                    window.location.href = result.link;
+
+                    //$("#email1").val(toEmailAddress);
+                    
+                }
+                if (result.status == false) {
+                    $("#err-noti").text("We could not find the email you have entered");
+                }
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+

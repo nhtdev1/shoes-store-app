@@ -40,12 +40,15 @@ namespace ShoesStore.Controllers
         public ActionResult EditProfile(User user)
         {
 
+<<<<<<< HEAD
             //var _user = Session[UserSession] as UserLogin;
             //User model = null;
             //if (_user != null)
             //{
             //    model = new UserDao().GetUser(_user.UserID);
             //}
+=======
+>>>>>>> update linh tinh
             bool res = new UserDao().Edit(user);
             return View(user);
         }

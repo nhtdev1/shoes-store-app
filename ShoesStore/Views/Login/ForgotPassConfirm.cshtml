@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<title>Reset your password</title>
+
+<div class="container">
+    <h2 class="py-3">Forgot password</h2>
+
+    <div><label id="err-noti">@ViewBag.Message</label></div>
+
+    <div id="resetpass-div">
+        <form action="/Login/ForgotPassConfirm" method="post">
+
+
+            <label class="d-block">New password</label>
+            <input class="my-input" type="password" name="newPass" />
+
+            <label class="d-block">Repeat new password</label>
+            <input class="my-input" type="password" name="newPass2" />
+
+            <label class="d-block">Verification code</label>
+            <input class="my-input" type="text" name="vericode" />
+
+            <button class="d-block my-5 button" type="submit">Set new password</button>
+        </form>
+    </div>
+
+</div>
+
+<style>
+    .my-input {
+        background-color: #eee;
+        border: none;
+        padding: 12px 15px;
+        margin: 0 0 20px 0;
+        width: 500px;
+    }
+     #err-noti{
+        color:red;
+    }
+</style>

@@ -102,7 +102,10 @@
         load(1, conditions);
     });
 
-  
+
+
+
+
 
 
     
@@ -110,6 +113,7 @@
     load(1, conditions);
 
     var slider = document.getElementById('price-range');
+<<<<<<< HEAD
     slider.noUiSlider.destroy();
 
     noUiSlider.create(slider, {
@@ -134,6 +138,36 @@
         conditions[5] = "";
     });
   
+=======
+    if (slider != null) {
+
+       slider.noUiSlider.destroy();
+
+        noUiSlider.create(slider, {
+            start: [0, 300],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 300
+            },
+            step: 5
+        });
+
+        slider.noUiSlider.on('update', function () {
+            var model = slider.noUiSlider.get();
+            $('#lower-value').text(model[0]);
+            $('#upper-value').text(model[1]);
+            conditions[5] = model[0] + "-" + model[1];
+        });
+
+        slider.noUiSlider.on('change', function () {
+            load(1, conditions);
+            //conditions[5] = "";
+        });
+
+    }
+
+>>>>>>> update linh tinh
 });
 
 

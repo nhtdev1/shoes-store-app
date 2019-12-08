@@ -62,7 +62,7 @@
                             @Html.TextBoxFor(model => model.Email, new { id = "input", placeholder = "Email" });
                             @Html.PasswordFor(model => model.Password, new { id = "input", placeholder = "Password" });
                             @Html.ValidationSummary(false, "", "error");
-                            <a href="#">Forgot your password?</a>
+                            <a href="/login/forgotpass">Forgot your password?</a>
                             <button type="submit">Sign In</button>
                         }
                     }
@@ -89,6 +89,10 @@
     </div>
 </div>
 <script src="/Assets/Client2/js/jquery-3.4.1.min.js"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> update linh tinh
 <script>
     $('#btn-sign-up').on('click', function () {
         var email = $('.email-input').val();

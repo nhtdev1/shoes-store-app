@@ -53,6 +53,7 @@
     <Compile Include="Dao\AccountDao.cs" />
     <Compile Include="Dao\CategoryDao.cs" />
     <Compile Include="Dao\ColorDao.cs" />
+    <Compile Include="Dao\EncryptorMD5.cs" />
     <Compile Include="Dao\OrderDao.cs" />
     <Compile Include="Dao\OrderDetailsDao.cs" />
     <Compile Include="Dao\PaymentDao.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="EF\Shoe.cs" />
     <Compile Include="EF\ShoesStore.cs" />
     <Compile Include="EF\Size.cs" />
-    <Compile Include="EF\Slide.cs" />
     <Compile Include="EF\TemplateProductView.cs" />
     <Compile Include="EF\TopTrendingView.cs" />
     <Compile Include="EF\User.cs" />

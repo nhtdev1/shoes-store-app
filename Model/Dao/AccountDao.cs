@@ -14,6 +14,7 @@ namespace Model.Dao
 
         public bool Login(string username, string password)
         {
+            password = EncryptorMD5.Hash(password);
             var quantity = db.Accounts.Count(p => (p.UserName.Equals(username) || p.Email.Equals(username))
             && p.Password.Equals(password));
 
@@ -36,6 +37,10 @@ namespace Model.Dao
 
         public bool ChangePass(long accID, string newPass)
         {
+<<<<<<< HEAD
+=======
+            newPass = EncryptorMD5.Hash(newPass);
+>>>>>>> update linh tinh
             try
             {
                 var _acc = db.Accounts.Find(accID);

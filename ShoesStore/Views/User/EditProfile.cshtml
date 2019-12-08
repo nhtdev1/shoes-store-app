@@ -8,11 +8,26 @@
 <section>
     <div class="container">
         <div id="user-pf-wrapper">
+
             <div id="left-panel-user">
-                <div id="avatar-name">
-                    <img src="./img/gallery/r2.jpg" alt="">
-                    <label class="font-weight-bold">@Model.Name</label>
+                <div id="avatar-name" class="text-center">
+                    <img class="d-block mt-5" src="/Assets/Client/img/blog/author.png" />
+                    <label class="pb-5 mt-4">@Model.Name</label>
                 </div>
+
+                <div class="left-item">
+                    <a class="my-3" href="/User/ViewProfile"><span><i class="ti-home mr-3"></i></span> Account overview</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="/User/EditProfile"><span><i class="ti-pencil mr-3"></i></span> Edit profile</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="/User/ResetPassword"><span><i class="ti-lock mr-3"></i></span> Change password</a>
+                </div>
+                <div class="left-item">
+                    <a class="my-3" href="#"><span><i class="ti-shopping-cart mr-3"></i></span> My cart</a>
+                </div>
+<<<<<<< HEAD
                 <ul>
                     <li>
                         <a class="p-3" href="/User/ViewProfile"><span><i class="fas fa-home"></i></span> Account overview</a>
@@ -27,10 +42,18 @@
                         <a class="p-3" href="#"><span><i class="fas fa-shopping-cart"></i></span> My cart</a>
                     </li>
                 </ul>
+=======
+>>>>>>> update linh tinh
             </div>
+
+
             <div id="right-panel-user">
                 <div class="user-info">
+<<<<<<< HEAD
                     <label class="font-weight-bold">Edit your profile</label>
+=======
+                    <h2 class="mb-5">Edit your profile</h2>
+>>>>>>> update linh tinh
                     <form action="/User/EditProfile" method="post">
                         @Html.HiddenFor(m => m.UserID)
                         <div class="form-group">
@@ -49,8 +72,13 @@
                             <label>Date of birth</label>
                             <input type="date" class="form-control" value="@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")" name="DayOfBirth">
                         </div>
+<<<<<<< HEAD
                         <button type="submit">SAVE</button>
                         <button type="reset" class="btn-light">CANCEL</button>
+=======
+                        <button class="button-tracking my-5" type="submit">SAVE</button>
+                        <button class="button button-header my-5" type="reset" class="btn-light">CANCEL</button>
+>>>>>>> update linh tinh
                     </form>
 
                 </div>

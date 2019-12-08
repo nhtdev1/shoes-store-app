@@ -14,7 +14,6 @@ namespace Model.EF
         {
             Account1 = new HashSet<Account>();
             Menus = new HashSet<Menu>();
-            Slides = new HashSet<Slide>();
             Authorizations = new HashSet<Authorization>();
         }
 
@@ -27,7 +26,7 @@ namespace Model.EF
         [StringLength(200)]
         public string Email { get; set; }
 
-        [StringLength(20)]
+        [StringLength(200)]
         public string Password { get; set; }
 
         public DateTime? DateCreated { get; set; }
@@ -45,9 +44,6 @@ namespace Model.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Menu> Menus { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Slide> Slides { get; set; }
 
         public virtual User User { get; set; }
 
