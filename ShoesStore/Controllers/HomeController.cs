@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+<<<<<<< HEAD
 using ShoesStore.Models;
+=======
+>>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
 using ShoesStore.Utils;
 
 namespace ShoesStore.Controllers
