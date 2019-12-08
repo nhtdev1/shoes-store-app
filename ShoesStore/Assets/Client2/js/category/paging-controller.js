@@ -105,21 +105,12 @@
 
 
 
-
-<<<<<<< HEAD
-=======
-
-
-    
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
-
     load(1, conditions);
 
     var slider = document.getElementById('price-range');
-<<<<<<< HEAD
     if (slider != null) {
 
-       slider.noUiSlider.destroy();
+        slider.noUiSlider.destroy();
 
         noUiSlider.create(slider, {
             start: [0, 300],
@@ -140,68 +131,11 @@
 
         slider.noUiSlider.on('change', function () {
             load(1, conditions);
-            //conditions[5] = "";
+            conditions[5] = "";
         });
 
     }
 
-=======
-<<<<<<< HEAD
-    slider.noUiSlider.destroy();
-
-    noUiSlider.create(slider, {
-        start: [50, 100],
-        connect: true,
-        range: {
-            'min': 0,
-            'max': 300
-        },
-        step: 5
-    });
-
-    slider.noUiSlider.on('update', function () {
-        var model = slider.noUiSlider.get();
-        $('#lower-value').text(model[0]);
-        $('#upper-value').text(model[1]);
-        conditions[5] = model[0] + "-" + model[1];
-    });
-
-    slider.noUiSlider.on('change', function () {
-        load(1, conditions);
-        conditions[5] = "";
-    });
-  
-=======
-    if (slider != null) {
-
-       slider.noUiSlider.destroy();
-
-        noUiSlider.create(slider, {
-            start: [0, 300],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 300
-            },
-            step: 5
-        });
-
-        slider.noUiSlider.on('update', function () {
-            var model = slider.noUiSlider.get();
-            $('#lower-value').text(model[0]);
-            $('#upper-value').text(model[1]);
-            conditions[5] = model[0] + "-" + model[1];
-        });
-
-        slider.noUiSlider.on('change', function () {
-            load(1, conditions);
-            //conditions[5] = "";
-        });
-
-    }
-
->>>>>>> update linh tinh
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
 });
 
 

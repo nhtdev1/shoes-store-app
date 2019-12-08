@@ -14,6 +14,8 @@ namespace Model.Dao
 
         public bool Login(string username, string password)
         {
+            if (username == null || password == null) return false;
+            if (username.Trim().Equals("") || password.Trim().Equals("")) return false;
             password = EncryptorMD5.Hash(password);
             var quantity = db.Accounts.Count(p => (p.UserName.Equals(username) || p.Email.Equals(username))
             && p.Password.Equals(password));
@@ -51,8 +53,10 @@ namespace Model.Dao
             }
         }
 
-        public bool SignUp(string email, string password)
+        public int SignUp(string email, string password)
         {
+            if (email.Trim().Equals("")) return 0;
+            if (password.Trim().Equals("")) return 1;
             try
             {
                 var user = db.Users.Add(new User()
@@ -64,17 +68,17 @@ namespace Model.Dao
                 var acc = db.Accounts.Add(new Account()
                 {
                     Email = email,
-                    Password = password,
+                    Password = EncryptorMD5.Hash(password),
                     Status = true,
                     UserID = user.UserID
                     
                 });
                 db.SaveChanges();
-                return true;
+                return 2;
             }
             catch
             {
-                return false;
+                return 3;
             }
         }
     }

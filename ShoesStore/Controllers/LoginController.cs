@@ -78,10 +78,23 @@ namespace ShoesStore.Controllers
         }
 
         [HttpPost]
+        public JsonResult SignIn(string email, string password)
+        {
+            var result = new AccountDao().Login(email, password);
+            string message = "Email or password does not exist. Please try again";
+            if (result == true) message = "Log in successfully";
+            return Json(new
+            {
+                message = message
+            });
+        }
+
+
+        [HttpPost]
         public JsonResult SignUp(string email, string password)
         {
             var _acc = new AccountDao().GetAccount(email);
-            bool res = false;
+            int res = 3;
             string message = "";
             if (_acc != null)
             {
@@ -90,13 +103,20 @@ namespace ShoesStore.Controllers
             else
             {
                 res = new AccountDao().SignUp(email, password);
-                if(res == true)
+                if(res == 0)
                 {
-                    message = "Register Successfully";
+                    message = "Email is not allowed to be empty";
+                }
+                else if(res == 1)
+                {
+                    message = "Password is not allowed to be empty";
+                }else if(res == 2)
+                {
+                    message = "Sign up successfully";
                 }
                 else
                 {
-                    message = "Register failed";
+                    message = "Registration failed";
                 }
             }
             return Json(new

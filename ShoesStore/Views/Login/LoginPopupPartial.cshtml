@@ -18,8 +18,8 @@
                             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                         <span>or use your email for registration</span>
-                        <input type="email" placeholder="Email" id="input" class="email-input" />
-                        <input type="password" placeholder="Password" id="input" class="password-input" />
+                        <input type="email" placeholder="Email" id="input" class="email-input-signup" />
+                        <input type="password" placeholder="Password" id="input" class="password-input-signup" />
                         <button type="button" id="btn-sign-up">Sign Up</button>
                     </form>
                 </div>
@@ -59,11 +59,11 @@
                         {
 
                             <span>or use your account</span>
-                            @Html.TextBoxFor(model => model.Email, new { id = "input", placeholder = "Email" });
-                            @Html.PasswordFor(model => model.Password, new { id = "input", placeholder = "Password" });
+                            @Html.TextBoxFor(model => model.Email, new { id = "input", placeholder = "Email",@class = ".email-input-signin" });
+                            @Html.PasswordFor(model => model.Password, new { id = "input", placeholder = "Password",@class = ".password-input-signin" });
                             @Html.ValidationSummary(false, "", "error");
                             <a href="/login/forgotpass">Forgot your password?</a>
-                            <button type="submit">Sign In</button>
+                            <button type="submit" id="btn-sign-in">Sign In</button>
                         }
                     }
 
@@ -89,28 +89,34 @@
     </div>
 </div>
 <script src="/Assets/Client2/js/jquery-3.4.1.min.js"></script>
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> update linh tinh
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
 <script>
     $('#btn-sign-up').on('click', function () {
-        var email = $('.email-input').val();
-        var password = $('.password-input').val();
+        var email = $('.email-input-signup').val();
+        var password = $('.password-input-signup').val();
         $.ajax({
             url: '/Login/SignUp',
             data: { email: email, password: password },
             dataType: "json",
             type: "POST",
             success: function (response) {
-
                 alert(response.message);
-
             }
         });
     });
+
+     /* $('#btn-sign-in').on('click', function () {
+        var email = $('.email-input-signin').val();
+        var password = $('.password-input-signin').val();
+        $.ajax({
+            url: '/Login/SignIn',
+            data: { email: email, password: password },
+            dataType: "json",
+            type: "POST",
+            success: function (response) {
+                alert(response.message);
+  
+            }
+        });
+    });*/
 </script>
