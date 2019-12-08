@@ -1,3 +1,4 @@
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.dll.config
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\ShoesStore.pdb
@@ -36,7 +37,6 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Cryptography.Primitives.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Security.Principal.Windows.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Text.Encoding.CodePages.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.ValueTuple.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\System.Xml.XmlDocument.dll
@@ -48,6 +48,7 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\vbc.rs
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\VBCSCompiler.exe
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\roslyn\VBCSCompiler.exe.config
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Antlr3.Runtime.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\CloudinaryDotNet.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\EntityFramework.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\EntityFramework.SqlServer.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Microsoft.AspNet.Identity.Core.dll
@@ -67,7 +68,10 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Microsoft.Web
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Model.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Newtonsoft.Json.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Owin.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.Mvc.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Net.Http.Formatting.dll
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Text.Encodings.Web.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.Helpers.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.Mvc.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.Optimization.dll
@@ -78,6 +82,9 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.We
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\WebGrease.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Model.pdb
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\Model.dll.config
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\CloudinaryDotNet.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.xml
+D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.Mvc.xml
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Net.Http.Formatting.xml
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.Helpers.xml
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Web.Mvc.xml
@@ -106,10 +113,3 @@ D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesSt
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.csproj.CopyComplete
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.dll
 D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\obj\Debug\ShoesStore.pdb
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.Mvc.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.xml
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\PagedList.Mvc.xml
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\CloudinaryDotNet.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\System.Text.Encodings.Web.dll
-D:\Microsoft Visual Studio\repos\ASP.NET\ShoesStore\ShoesStore\bin\CloudinaryDotNet.xml

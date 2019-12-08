@@ -37,10 +37,7 @@ namespace Model.Dao
 
         public bool ChangePass(long accID, string newPass)
         {
-<<<<<<< HEAD
-=======
             newPass = EncryptorMD5.Hash(newPass);
->>>>>>> update linh tinh
             try
             {
                 var _acc = db.Accounts.Find(accID);

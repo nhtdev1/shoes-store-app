@@ -105,9 +105,6 @@ namespace ShoesStore.Controllers
                 status = res
             });
         }
-<<<<<<< HEAD
-=======
-
         [HttpGet]
         public ActionResult ForgotPass(string email, string password)
         {
@@ -196,6 +193,5 @@ namespace ShoesStore.Controllers
             var user = Session[UserSession] as UserLogin;
             return PartialView(user);
         }
->>>>>>> update linh tinh
     }
 }

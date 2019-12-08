@@ -4,10 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
-<<<<<<< HEAD
-=======
-using ShoesStore.Models;
->>>>>>> update linh tinh
 using ShoesStore.Utils;
 
 namespace ShoesStore.Controllers
