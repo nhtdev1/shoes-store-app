@@ -23,48 +23,16 @@
                 </div>
                 <div class="left-item">
                     <a class="my-3" href="/User/ResetPassword"><span><i class="ti-lock mr-3"></i></span> Change password</a>
-<<<<<<< HEAD
                 </div>
                 <div class="left-item">
                     <a class="my-3" href="#"><span><i class="ti-shopping-cart mr-3"></i></span> My cart</a>
                 </div>
-=======
-                </div>
-                <div class="left-item">
-                    <a class="my-3" href="#"><span><i class="ti-shopping-cart mr-3"></i></span> My cart</a>
-                </div>
-<<<<<<< HEAD
-                <ul>
-                    <li>
-                        <a class="p-3" href="/User/ViewProfile"><span><i class="fas fa-home"></i></span> Account overview</a>
-                    </li>
-                    <li>
-                        <a class="p-3" href="/User/EditProfile"><span><i class="fas fa-pen"></i></span> Edit profile</a>
-                    </li>
-                    <li>
-                        <a class="p-3" href="/User/ResetPassword"><span><i class="fas fa-lock"></i></span> Change password</a>
-                    </li>
-                    <li>
-                        <a class="p-3" href="#"><span><i class="fas fa-shopping-cart"></i></span> My cart</a>
-                    </li>
-                </ul>
-=======
->>>>>>> update linh tinh
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
             </div>
 
 
             <div id="right-panel-user">
                 <div class="user-info">
-<<<<<<< HEAD
                     <h2 class="mb-5">Edit your profile</h2>
-=======
-<<<<<<< HEAD
-                    <label class="font-weight-bold">Edit your profile</label>
-=======
-                    <h2 class="mb-5">Edit your profile</h2>
->>>>>>> update linh tinh
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
                     <form action="/User/EditProfile" method="post">
                         @Html.HiddenFor(m => m.UserID)
                         <div class="form-group">
@@ -73,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control" value="@Model.Email" name="Email">
+                            <input type="email" class="form-control" value="@Model.Email" name="Email" disabled>
                         </div>
                         <div class="form-group">
                             <label>Phone number</label>
@@ -83,18 +51,8 @@
                             <label>Date of birth</label>
                             <input type="date" class="form-control" value="@Convert.ToDateTime(Model.DayOfBirth).ToString("yyyy-MM-dd")" name="DayOfBirth">
                         </div>
-<<<<<<< HEAD
                         <button class="button-tracking my-5" type="submit">SAVE</button>
-                        <button class="button button-header my-5" type="reset" class="btn-light">CANCEL</button>
-=======
-<<<<<<< HEAD
-                        <button type="submit">SAVE</button>
-                        <button type="reset" class="btn-light">CANCEL</button>
-=======
-                        <button class="button-tracking my-5" type="submit">SAVE</button>
-                        <button class="button button-header my-5" type="reset" class="btn-light">CANCEL</button>
->>>>>>> update linh tinh
->>>>>>> baf77c814045e2deed4c9714b7896f4cf11734fa
+                        <button class="button button-header my-5 btn-light" type="reset">CANCEL</button>
                     </form>
 
                 </div>
